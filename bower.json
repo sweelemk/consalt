@@ -1,0 +1,16 @@
+{
+  "name": "sweelemk",
+  "version": "1.0.1",
+  "description": "gulp template",
+  "authors": [
+    "Eugene Godun"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "2.*",
+    "normalize.css": "*"
+  }
+}

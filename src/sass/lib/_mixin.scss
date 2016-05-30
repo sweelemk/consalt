@@ -1,0 +1,279 @@
+@charset "UTF-8";
+
+
+
+@mixin r($width) {
+  @media only screen and (max-width: $width+ "px") {
+    @content
+  }
+};
+
+@mixin rh($height) {
+  @media only screen and (max-height: $height + "px") {
+    @content
+  }
+};
+
+@mixin pseudo {
+  position: relative;
+  &::before, &::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+  }
+};
+@mixin clearfix {
+  &::after {
+    clear: both;
+    display: table;
+    content: '';
+  }
+};
+
+@mixin border-top-radius($radius) {
+  border-top-right-radius: $radius;
+  border-top-left-radius: $radius;
+};
+
+@mixin border-right-radius($radius) {
+  border-bottom-right-radius: $radius;
+  border-top-right-radius: $radius;
+}
+;
+@mixin border-bottom-radius($radius) {
+  border-bottom-right-radius: $radius;
+  border-bottom-left-radius: $radius;
+};
+
+@mixin border-left-radius($radius) {
+  border-bottom-left-radius: $radius;
+  border-top-left-radius: $radius;
+}
+;
+@mixin user-select($select: none) {
+  -webkit-user-select: $select;
+     -moz-user-select: $select;
+      -ms-user-select: $select; // IE10+
+          user-select: $select;
+};
+
+///timing functions
+$ease-in-quad:      cubic-bezier(0.550,  0.085, 0.680, 0.530);
+$ease-in-cubic:     cubic-bezier(0.550,  0.055, 0.675, 0.190);
+$ease-in-quart:     cubic-bezier(0.895,  0.030, 0.685, 0.220);
+$ease-in-quint:     cubic-bezier(0.755,  0.050, 0.855, 0.060);
+$ease-in-sine:      cubic-bezier(0.470,  0.000, 0.745, 0.715);
+$ease-in-expo:      cubic-bezier(0.950,  0.050, 0.795, 0.035);
+$ease-in-circ:      cubic-bezier(0.600,  0.040, 0.980, 0.335);
+$ease-in-back:      cubic-bezier(0.600, -0.280, 0.735, 0.045);
+
+$ease-out-quad:     cubic-bezier(0.250,  0.460, 0.450, 0.940);
+$ease-out-cubic:    cubic-bezier(0.215,  0.610, 0.355, 1.000);
+$ease-out-quart:    cubic-bezier(0.165,  0.840, 0.440, 1.000);
+$ease-out-quint:    cubic-bezier(0.230,  1.000, 0.320, 1.000);
+$ease-out-sine:     cubic-bezier(0.390,  0.575, 0.565, 1.000);
+$ease-out-expo:     cubic-bezier(0.190,  1.000, 0.220, 1.000);
+$ease-out-circ:     cubic-bezier(0.075,  0.820, 0.165, 1.000);
+$ease-out-back:     cubic-bezier(0.175,  0.885, 0.320, 1.275);
+
+$ease-in-out-quad:  cubic-bezier(0.455,  0.030, 0.515, 0.955);
+$ease-in-out-cubic: cubic-bezier(0.645,  0.045, 0.355, 1.000);
+$ease-in-out-quart: cubic-bezier(0.770,  0.000, 0.175, 1.000);
+$ease-in-out-quint: cubic-bezier(0.860,  0.000, 0.070, 1.000);
+$ease-in-out-sine:  cubic-bezier(0.445,  0.050, 0.550, 0.950);
+$ease-in-out-expo:  cubic-bezier(1.000,  0.000, 0.000, 1.000);
+$ease-in-out-circ:  cubic-bezier(0.785,  0.135, 0.150, 0.860);
+$ease-in-out-back:  cubic-bezier(0.680, -0.550, 0.265, 1.550);
+
+///font stacks
+$font-stack-helvetica: (
+  "Helvetica Neue",
+  "Helvetica",
+  "Arial",
+  sans-serif,
+);
+
+$font-stack-lucida-grande: (
+  "Lucida Grande",
+  "Lucida Sans Unicode",
+  "Geneva",
+  "Verdana",
+  sans-serif,
+);
+
+$font-stack-verdana: (
+  "Verdana",
+  "Geneva",
+  sans-serif,
+);
+
+$font-stack-system: (
+  -apple-system,
+  BlinkMacSystemFont,
+  "Segoe UI",
+  "Roboto",
+  "Oxygen",
+  "Ubuntu",
+  "Cantarell",
+  "Fira Sans",
+  "Droid Sans",
+  "Helvetica Neue",
+  sans-serif,
+);
+
+$font-stack-garamond: (
+  "Garamond",
+  "Baskerville",
+  "Baskerville Old Face",
+  "Hoefler Text",
+  "Times New Roman",
+  serif,
+);
+
+$font-stack-georgia: (
+  "Georgia",
+  "Times",
+  "Times New Roman",
+  serif,
+);
+
+$font-stack-hoefler-text: (
+  "Hoefler Text",
+  "Baskerville Old Face",
+  "Garamond",
+  "Times New Roman",
+  serif,
+);
+
+$font-stack-consolas: (
+  "Consolas",
+  "monaco",
+  monospace,
+);
+
+$font-stack-courier-new: (
+  "Courier New",
+  "Courier",
+  "Lucida Sans Typewriter",
+  "Lucida Typewriter",
+  monospace,
+);
+
+$font-stack-monaco: (
+  "monaco",
+  "Consolas",
+  "Lucida Console",
+  monospace,
+);
+
+//Font-face
+//example 
+//
+// @include font-face('museosans-300', "../fonts/museosanscyrl_300" ,null, null, ttf eot woff2 woff)
+// @include font-face('Samplinal', 'fonts/Samplinal', 500, normal, eot woff2 woff);
+//
+// =============================================================================
+// String Replace
+// =============================================================================
+
+@function str-replace($string, $search, $replace: "") {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+// =============================================================================
+// Font Face
+// =============================================================================
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+  $src: null;
+
+  $extmods: (
+    eot: "?",
+    svg: "#" + str-replace($name, " ", "_")
+  );
+
+  $formats: (
+    otf: "opentype",
+    ttf: "truetype"
+  );
+
+  @each $ext in $exts {
+    $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+    $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+  }
+
+  @font-face {
+    font-family: quote($name);
+    font-style: $style;
+    font-weight: $weight;
+    src: $src;
+  }
+}
+
+//Transitions
+
+@mixin transition($name...) {
+  transition: $name 0.3s ease 0s;
+}
+@function transition-property-names($props) {
+  $new-props: ();
+
+  @each $prop in $props {
+  $new-props: append($new-props, transition-property-name($prop), comma);
+  }
+
+  @return $new-props;
+}
+
+/*
+ * a small mixin for easy use of rem with px as fallback
+ * usage: @include x-rem(font-size, 14px)
+ * usage: @include x-rem(marign, 0 12px 2 1.2)
+ * usage: @include x-rem(padding, 1.5 24px)
+ *
+ * thanks to Eric Meyer for https://github.com/ericam/susy
+ * and Hans Christian Reinl for http://drublic.de/blog/rem-fallback-sass-less/
+ */
+@mixin x-rem($property, $values) {
+  // Create a couple of empty lists as output buffers.
+  $base-font-size: 16px; // should be consistent with your html/body font-size
+  $px-values: ();
+  $rem-values: ();
+
+  // Loop through the $values list
+  @each $value in $values {
+    // For each property value, if it's in rem or px, derive both rem and
+    // px values for it and add those to the end of the appropriate buffer.
+    // Ensure all pixel values are rounded to the nearest pixel.
+    @if $value == 0 or $value == 0px {
+      // 0 -- use it without a unit
+      $px-values: join($px-values, 0);
+      $rem-values: join($rem-values, 0);
+    } @else if type-of($value) == number and not unitless($value) and (unit($value) == px) {
+      // px value given - calculate rem value from base-font-size
+      $new-rem-value: $value / $base-font-size;
+      $px-values: join($px-values, round($value));
+      $rem-values: join($rem-values, #{$new-rem-value}rem);
+    } @else if $value == auto or $value == inherit {
+        // auto or inherit - don't add px or rem
+        $px-values: join($px-values, $value);
+        $rem-values: join($rem-values, $value);
+    } @else {
+      // unitless value - use those directly as rem and calculate the px-fallback
+      $px-values: join($px-values, round($value * $base-font-size));
+      $rem-values: join($rem-values, #{$value}rem);
+    } 
+  }
+
+  // output the converted rules
+  #{$property}: $px-values;
+  #{$property}: $rem-values;
+}
