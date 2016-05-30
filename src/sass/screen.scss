@@ -1,2 +1,139 @@
 @import "../../bower_components/normalize.css/normalize.css";
+@import "../../bower_components/fullpage.js/jquery.fullPage.scss";
 @import "lib/base";
+html {
+	text-size-adjust: 100%;
+	height: 100%;
+	font-size: 16px;
+}
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+	font-kerning: normal;
+	height: 100%;
+	background-color: $white;
+	min-width: 320px;
+}
+* {
+	margin: 0;
+	outline: none;
+}
+*, *::after, *::before {
+	box-sizing: border-box;
+}
+ul, ol {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+input {
+	border: none;
+	background-color: transparent;
+	padding: 0;
+	margin: 0;
+	outline: none;
+}
+button {
+	border: none;
+	outline: none;
+	background: transparent;
+	padding: 0;
+}
+a {
+	text-decoration: none;
+}
+.menu {
+	position: fixed;
+	@include x-rem(right, 75px);
+	@include x-rem(top, 86px);
+	cursor: pointer;
+	z-index: 6;
+	.menu-left {
+		font-family: $Book;
+		color: $grey;
+		opacity: 0.5;
+		@include x-rem(font-size, 19px);
+		@include x-rem(margin, -3px 0 0);
+		@include x-rem(padding, 0 10px 0 0);
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.menu-btn {
+		width: 37px;
+		height: 20px;
+		display: inline-block;
+		vertical-align: middle;
+		position: relative;
+		cursor: pointer;
+		span {
+			width: 100%;
+			@include x-rem(height, 5px);
+			display: inline-block;
+			cursor: pointer;
+			&::before {
+				content: '';
+				width: 100%;
+				@include x-rem(height, 5px);
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				background-color: $grey;
+			}
+			&::after {
+				content: '';
+				width: 100%;
+				@include x-rem(height, 5px);
+				position: absolute;
+				top: 0;
+				left: 0;
+				background-color: $grey;
+			}
+		}
+	}
+}
+.header {
+	@include x-rem(padding-top, 72px);
+	padding-left: 9.375%; // 150px / 1600
+	padding-right: 9.375%; // 150px / 1600
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 5;
+}
+.logo {
+	@include x-rem(width, 179px);
+	@include x-rem(height, 47px);
+	background-image: url(../img/icons/logo.png);
+	background-size: cover;
+	float: left;
+}
+.index {
+	.out {
+		width: 100%;
+		height: 100vh;
+		overflow: hidden;
+		position: relative;
+		z-index: 2;
+	}
+}
+.canvas__area {
+	width: 100%; // 745 / 1600
+	float: left;
+	height: 100%;
+	background-color: $leftBar;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 1;
+	&::after {
+		content: '';
+		width: 53.4375%; // 1600 / 855
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		background-color: $white;
+	}
+}

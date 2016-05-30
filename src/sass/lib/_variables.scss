@@ -1,1 +1,19 @@
-$blue: blue;
+// fonts
+@include font-face('FuturaNewBook', "../fonts/FuturaNewBook" ,null, null, ttf eot woff2 woff svg);
+@include font-face('FuturaNewMedium', "../fonts/FuturaNewMedium" ,null, null, ttf eot woff2 woff svg);
+@include font-face('FuturaNewBold', "../fonts/FuturaNewBold" ,null, null, ttf eot woff2 woff svg);
+@include font-face('FuturaNewDemi', "../fonts/FuturaNewDemi" ,null, null, ttf eot woff2 woff svg);
+@include font-face('FuturaNewHeavy', "../fonts/FuturaNewHeavy" ,null, null, ttf eot woff2 woff svg);
+
+
+$Book: 'FuturaNewBook', $font-stack-helvetica;
+$Medium: 'FuturaNewMedium', $font-stack-helvetica;
+$Bold: 'FuturaNewBold', $font-stack-helvetica;
+$Demi: 'FuturaNewDemi', $font-stack-helvetica;
+$Heavy: 'FuturaNewHeavy', $font-stack-helvetica;
+
+
+// colors
+$white: #ffffff;
+$grey: #34434c;
+$leftBar: #e6f0f8;
