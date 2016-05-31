@@ -19,14 +19,25 @@ $logo-offset-y: 0px;
 $logo-width: 358px;
 $logo-height: 94px;
 $logo-total-width: 358px;
-$logo-total-height: 94px;
+$logo-total-height: 174px;
 $logo-image: 'sprite.png';
-$logo: (0px, 0px, 0px, 0px, 358px, 94px, 358px, 94px, 'sprite.png', 'logo', );
+$logo: (0px, 0px, 0px, 0px, 358px, 94px, 358px, 174px, 'sprite.png', 'logo', );
+$scroll-name: 'scroll';
+$scroll-x: 0px;
+$scroll-y: 94px;
+$scroll-offset-x: 0px;
+$scroll-offset-y: -94px;
+$scroll-width: 28px;
+$scroll-height: 80px;
+$scroll-total-width: 358px;
+$scroll-total-height: 174px;
+$scroll-image: 'sprite.png';
+$scroll: (0px, 94px, 0px, -94px, 28px, 80px, 358px, 174px, 'sprite.png', 'scroll', );
 $spritesheet-width: 358px;
-$spritesheet-height: 94px;
+$spritesheet-height: 174px;
 $spritesheet-image: 'sprite.png';
-$spritesheet-sprites: ($logo, );
-$spritesheet: (358px, 94px, 'sprite.png', $spritesheet-sprites, );
+$spritesheet-sprites: ($logo, $scroll, );
+$spritesheet: (358px, 174px, 'sprite.png', $spritesheet-sprites, );
 
 /*
 The provided mixins are intended to be used with the array-like variables
