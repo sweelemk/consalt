@@ -4,6 +4,8 @@
 @include font-face('FuturaNewBold', "../fonts/FuturaNewBold" ,null, null, ttf eot woff2 woff svg);
 @include font-face('FuturaNewDemi', "../fonts/FuturaNewDemi" ,null, null, ttf eot woff2 woff svg);
 @include font-face('FuturaNewHeavy', "../fonts/FuturaNewHeavy" ,null, null, ttf eot woff2 woff svg);
+@include font-face('FuturaNewCondMedium', "../fonts/FuturaNewCondMedium" ,null, null, ttf eot woff2 woff svg);
+@include font-face('FuturaNewLight', "../fonts/FuturaNewLight" ,null, null, ttf eot woff2 woff svg);
 
 
 $Book: 'FuturaNewBook', $font-stack-helvetica;
@@ -11,7 +13,8 @@ $Medium: 'FuturaNewMedium', $font-stack-helvetica;
 $Bold: 'FuturaNewBold', $font-stack-helvetica;
 $Demi: 'FuturaNewDemi', $font-stack-helvetica;
 $Heavy: 'FuturaNewHeavy', $font-stack-helvetica;
-
+$CondMedium: 'FuturaNewCondMedium', $font-stack-helvetica;
+$Light: 'FuturaNewLight', $font-stack-helvetica;
 
 // colors
 $white: #ffffff;
