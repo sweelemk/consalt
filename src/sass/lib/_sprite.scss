@@ -11,6 +11,17 @@ $icon-home: x y offset_x offset_y width height total_width total_height image_pa
 At the bottom of this section, we provide information about the spritesheet itself
 $spritesheet: width height image $spritesheet-sprites;
 */
+$arrow-name: 'arrow';
+$arrow-x: 28px;
+$arrow-y: 94px;
+$arrow-offset-x: -28px;
+$arrow-offset-y: -94px;
+$arrow-width: 54px;
+$arrow-height: 32px;
+$arrow-total-width: 358px;
+$arrow-total-height: 174px;
+$arrow-image: 'sprite.png';
+$arrow: (28px, 94px, -28px, -94px, 54px, 32px, 358px, 174px, 'sprite.png', 'arrow', );
 $logo-name: 'logo';
 $logo-x: 0px;
 $logo-y: 0px;
@@ -36,7 +47,7 @@ $scroll: (0px, 94px, 0px, -94px, 28px, 80px, 358px, 174px, 'sprite.png', 'scroll
 $spritesheet-width: 358px;
 $spritesheet-height: 174px;
 $spritesheet-image: 'sprite.png';
-$spritesheet-sprites: ($logo, $scroll, );
+$spritesheet-sprites: ($arrow, $logo, $scroll, );
 $spritesheet: (358px, 174px, 'sprite.png', $spritesheet-sprites, );
 
 /*
