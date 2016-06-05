@@ -5,6 +5,26 @@ html {
 	text-size-adjust: 100%;
 	height: 100%;
 	font-size: 16px;
+	&.hidden {
+		body {
+			overflow: hidden;
+		}
+	}
+	@include r(1599) {
+		font-size: 14px;
+	}
+	@include r(980) {
+		font-size: 16px;
+	}
+	@include r(639) {
+		font-size: 14px;
+	}
+	@include r(479) {
+		font-size: 13px;
+	}
+	@include r(374) {
+		font-size: 12px;
+	}
 }
 body {
 	-webkit-font-smoothing: antialiased;
@@ -39,6 +59,7 @@ button {
 	outline: none;
 	background: transparent;
 	padding: 0;
+	cursor: pointer;
 }
 a {
 	text-decoration: none;
@@ -49,6 +70,22 @@ a {
 	@include x-rem(top, 86px);
 	cursor: pointer;
 	z-index: 201;
+	@include r(1365) {
+		@include x-rem(right, 25px);
+	@include x-rem(top, 43px);
+	}
+	&.open {
+		.menu-btn {
+			span {
+				&::before {
+					bottom: 6px;
+				}
+				&::after {
+					top: 9px;
+				}
+			}
+		}
+	}
 	.menu-left {
 		font-family: $Book;
 		color: $grey;
@@ -58,7 +95,10 @@ a {
 		@include x-rem(padding, 0 10px 0 0);
 		display: inline-block;
 		vertical-align: middle;
-		transition: color 0.2s ease;
+		transition: color 0.2s ease-in-out, opacity 0.3s ease-in-out;
+		&.hidden {
+			opacity: 0;
+		}
 	}
 	.menu-btn {
 		width: 37px;
@@ -69,13 +109,15 @@ a {
 		cursor: pointer;
 		span {
 			width: 100%;
-			@include x-rem(height, 5px);
+			height: 5px;
+			// @include x-rem(height, 5px);
 			display: inline-block;
 			cursor: pointer;
 			&::before {
 				content: '';
 				width: 100%;
-				@include x-rem(height, 5px);
+				height: 5px;
+				// @include x-rem(height, 5px);
 				position: absolute;
 				bottom: 0;
 				left: 0;
@@ -85,7 +127,8 @@ a {
 			&::after {
 				content: '';
 				width: 100%;
-				@include x-rem(height, 5px);
+				height: 5px;
+				// @include x-rem(height, 5px);
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -120,12 +163,24 @@ a {
 	right: 0;
 	z-index: 5;
 	font-size: 0;
+	@include r(1365) {
+		@include x-rem(padding-top, 30px);
+	}
+	@include r(980) {
+		position: relative;
+	}
 	.header__left {
 		width: 46.5325%;
 		display: inline-block;
 		vertical-align: middle;
 		padding-right: 5.2%;
 		padding-left: 9.375%; // 150px / 1600
+		@include r(1365) {
+			padding-left: 2.375%;
+		}
+		@include r(980) {
+			padding-left: 5.2%;
+		}
 	}
 	.header__right {
 		width: 53.4375%;
@@ -133,6 +188,140 @@ a {
 		display: inline-block;
 		vertical-align: middle;
 		padding-right: 9.375%; // 150px / 1600
+		@include r(1365) {
+			padding-right: 2.375%;
+			padding-left: 2%;
+		}
+	}
+}
+.index {
+	.footer {
+		width: 53.4375%;
+		position: fixed;
+		@include x-rem(bottom, 50px);
+		right: 0;
+		opacity: 0;
+		transform: translateY(300px);
+		transition: 0.9s cubic-bezier(.89,.42,1,1) 0s, opacity 0.9s cubic-bezier(.89,.42,1,1) 0s;
+		@include r(1365) {
+			@include x-rem(bottom, 10px);
+		}
+		@include r(980) {
+			position: relative;
+			width: 100%;
+			opacity: 1;
+			transform: none;
+			width: 100%;
+			transition: none;
+			display: inline-block;
+			bottom: 0;
+			@include x-rem(padding, 40px); 
+		}
+		@include r(639) {
+			text-align: center;
+			@include x-rem(padding-top, 120px);
+		}
+		&.show {
+			transform: translateY(0);
+			opacity: 1;
+			transition-delay: 0.9s
+		}
+	}
+}
+.footer {
+	padding-left: 5%;
+	padding-right: 5%; // 150px / 1600
+	position: relative;
+	@include r(1365) {
+		padding-right: 2.375%;
+		padding-left: 2%;
+	}
+	@include r(980) {
+		padding-left: 5.2%;
+	}
+	@include r(639) {
+		text-align: center;
+		@include x-rem(padding-top, 120px);
+	}
+	.copyright {
+		float: left;
+		font-family: $Book;
+		@include x-rem(font-size, 14px);
+		@include x-rem(margin, 14px 0 0);
+		color: $grey;
+		@include r(639) {
+			float: none;
+		}
+	}
+	.developer {
+		float: right;
+		font-family: $Book;
+		@include x-rem(font-size, 14px);
+		@include x-rem(margin, 14px 0 0);
+		color: $grey;
+		a {
+			font-family: $Demi;
+			color: $grey;
+			transition: color 0.3s ease-in-out;
+			&:hover {
+				color: $hover;
+			}
+		}
+		@include r(639) {
+			float: none;
+		}
+	}
+	@include r(639) {
+		.scroll-top {
+			position: absolute;
+			@include x-rem(top, 80px);
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+	.overlay {
+		text-align: center;
+	}
+}
+.overlay {
+	overflow: hidden;
+}
+.scroll-top {
+	display: inline-block;
+	@include x-rem(height, 44px);
+	background-color: $scroll;
+	@include x-rem(border-radius, 22px);
+	text-align: left;
+	span {
+		font-family: $Book;
+		@include x-rem(font-size, 14px);
+		color: $grey;
+		position: relative;
+		@include x-rem(padding, 0 42px 0 25px);
+		transition: color 0.3s ease-in-out;
+		&::after {
+			content: '';
+			width: 8px;
+			height: 8px;
+			display: block;
+			border-top: 1px solid $grey;
+			border-right: 1px solid $grey;
+			position: absolute;
+			right: 20px;
+			top: 50%;
+			margin-top: -1px;
+			transform-origin: 50% 50%;
+			transform: rotate(-45deg);
+			transition: border-color 0.3s ease-in-out;
+		}
+	}
+	&:hover {
+		span {
+			color: $hover;
+			&::after {
+				border-color: $hover;
+			}
+		}
 	}
 }
 .language {
@@ -140,6 +329,9 @@ a {
 	vertical-align: middle;
 	float: right;
 	@include x-rem(padding, 10px 0);
+	@include r(980) {
+		display: none;
+	}
 	.language-item {
 		font-family: $CondMedium;
 		@include x-rem(font-size, 19.75px);
@@ -176,6 +368,9 @@ a {
 			color: $hover;
 		}
 	}
+	@include r(980) {
+		display: none;
+	}
 }
 .logo {
 	@include x-rem(width, 179px);
@@ -193,25 +388,40 @@ a {
 		overflow: hidden;
 		position: relative;
 		z-index: 2;
+		@include r(980) {
+			overflow: visible;
+			height: 100%;
+		}
 	}
 }
-.canvas__area {
-	width: 100%; // 745 / 1600
-	float: left;
-	height: 100%;
-	background-color: $leftBar;
-	position: fixed;
-	left: 0;
-	top: 0;
-	z-index: 1;
-	&::after {
-		content: '';
-		width: 53.4375%; // 1600 / 855
-		position: absolute;
+.index {
+	.canvas__area {
+		width: 100%; // 745 / 1600
+		float: left;
+		height: 100%;
+		background-color: $leftBar;
+		position: fixed;
+		left: 0;
 		top: 0;
-		right: 0;
-		bottom: 0;
-		background-color: $white;
+		z-index: 1;
+		@include r(980) {
+			background-image: url(../img/mobile-bg.jpg);
+			background-position: 0 100%;
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+		&::after {
+			content: '';
+			width: 53.4375%; // 1600 / 855
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			background-color: $white;
+			@include r(980) {
+				display: none;
+			}
+		}
 	}
 }
 .scroll {
@@ -226,6 +436,12 @@ a {
 	border-radius: 100%;
 	cursor: pointer;
 	text-align: center;
+	opacity: 0;
+	transform: translateY(300px);
+	transition: 0.9s cubic-bezier(.89,.42,1,1) 0s, opacity 0.9s cubic-bezier(.89,.42,1,1) 0s;
+	@include r(1365) {
+		@include x-rem(bottom, 33px);
+	}
 	.icon {
 		@include x-rem(width, 14px);
 		@include x-rem(height, 40px);
@@ -238,11 +454,22 @@ a {
 			background-size: cover;
 		}
 	}
+	&.hide {
+		transform: translateY(0);
+		opacity: 1;
+		transition-delay: 0;
+	}
+	@include r(980) {
+		display: none;
+	}
 }
 #fp-nav.left {
 	left: 40.15%;
 	top: auto;
 	@include x-rem(bottom, 60px);
+	@include r(1365) {
+		@include x-rem(bottom, 20px);
+	}
 }
 #fp-nav ul li {
 	@include x-rem(width, 30px);
@@ -294,8 +521,16 @@ a {
 		position: absolute;
 		@include x-rem(bottom, 60px);
 		left: 9.5%;
-		width: 22%;
-		@include x-rem(max-width, 335px);
+		width: 22%;		
+		@include r(1365) {
+			left: 2.375%;
+			@include x-rem(max-width, 330px);
+			width: 100%;
+			@include x-rem(bottom, 20px);
+		}
+		@include r(980) {
+			display: none;
+		}
 		.news-item {
 			data {
 				font-family: $Book;
@@ -334,8 +569,22 @@ a {
 	height: 100%;
 	float: left;
 	@include x-rem(padding-top, 120px);
-	padding-right: 5.2%;
+	padding-right: 4.2%;
 	padding-left: 9.375%; // 150px / 1600
+	@include r(1365) {
+		padding-left: 2.375%;
+		padding-right: 5.2%;
+		@include x-rem(padding-top, 66px);
+	}
+	@include r(980) {
+		float: none;
+		width: 100%;
+		@include x-rem(padding-top, 120px);
+		padding-left: 5.2%;
+	}
+	@include r(980) {
+		@include x-rem(padding-top, 88px);
+	}
 }
 .section__right {
 	width: 53.4375%;
@@ -344,17 +593,43 @@ a {
 	@include x-rem(padding-top, 120px);
 	padding-left: 5%;
 	padding-right: 9.375%; // 150px / 1600
+	@include r(1365) {
+		padding-right: 2.375%;
+		padding-left: 2%;
+		@include x-rem(padding-top, 66px);
+	}
+	@include r(980) {
+		float: none;
+		width: 100%;
+		padding-left: 5.2%;
+		padding-right: 5.2%;
+	}
 }
 .head__section {
 	margin-top: 13%;
 	position: relative;
+	@include r(980) {
+		margin-top: 0;
+	}
 	.head {
 		font-family: $Light;
 		@include x-rem(font-size, 50px);
 		color: $grey;
 		transition: opacity 0.3s ease-in-out;
+		@include r(1365) {
+			@include x-rem(font-size, 40px);
+		}
 		&.hidden {
 			opacity: 0;
+		}
+		@include r(980) {
+			@include x-rem(font-size, 50px);
+		}
+		@include r(639) {
+			@include x-rem(font-size, 40px);
+		}
+		@include r(479) {
+			@include x-rem(font-size, 37px);
 		}
 	}
 	.head-categories {
@@ -372,6 +647,9 @@ a {
 		.head-categories__item {
 			font-family: $Light;
 			@include x-rem(font-size, 50px);
+			@include r(1365) {
+				@include x-rem(font-size, 40px);
+			}
 			color: $grey;
 			position: absolute;
 			top: 0;
@@ -389,14 +667,31 @@ a {
 .business {
 	margin-top: 13%;
 	font-size: 0;
+	margin-bottom: -3%;
+	@include r(980) {
+		margin-top: 0;
+	}
+	@include r(639) {
+		margin-bottom: -8%;
+	}
 	.business-item {
 		display: inline-block;
-		width: 29%;
+		width: 30%;
 		vertical-align: top;
-		margin-right: 4.33%;
+		margin-right: 3.33%;
 		padding-bottom: 10.33%;
 		margin-bottom: 3%;
 		position: relative;
+		@include r(980) {
+			padding-bottom: 0;
+			&::after {
+				display: none;
+			}
+		}
+		@include r(639) {
+			width: 46%;
+			margin-bottom: 8%;
+		}
 		&::after {
 			content: '';
 			width: 85%;
@@ -456,7 +751,16 @@ a {
 	}
 }
 .clients {
-	margin: 7% 0;
+	margin: 4% 0 1%;
+	@include r(1365) {
+		margin: 1% 0 4%;
+	}
+	@include r(980) {
+		margin-top: 0;
+	}
+	@include r(639) {
+		margin-bottom: 3%;
+	}
 	font-size: 0;
 	.clients-item {
 		display: inline-block;
@@ -466,6 +770,13 @@ a {
 		padding-right: 4.33%;
 		margin-bottom: 3%;
 		position: relative;
+		@include r(1365) {
+			margin-bottom: 0;
+		}
+		@include r(639) {
+			width: 45%;
+			padding-right: 10%;
+		}
 		&::after {
 			content: '';
 			width: 85%;
@@ -478,6 +789,9 @@ a {
 			opacity: 0;
 			transform: scale(0.5);
 			transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+			@include r(980) {
+				display: none;
+			}
 		}
 		&:hover {
 			&::after {
@@ -525,6 +839,93 @@ a {
 		color: $lgrey;
 	}
 }
+.solutions {
+	margin: 7% 0 -5%;
+	font-size: 0;
+	@include r(980) {
+		margin-top: 0;
+	}
+	.solutions-item {
+		display: inline-block;
+		width: 29%;
+		vertical-align: top;
+		margin-right: 4.33%;
+		padding-right: 3.33%;
+		margin-bottom: 5%;
+		position: relative;
+		@include r(639) {
+			width: 45%;
+		}
+	}
+	.head {
+		position: relative;
+		display: inline-block;
+		@include x-rem(height, 36px);
+		width: 100%;
+		margin-bottom: 8%;
+		@include r(479) {
+			@include x-rem(height, 60px);
+			margin-bottom: 5%;
+		}
+		img {
+			max-height: 100%;
+			display: block;
+		}
+	}
+	.solutions-title {
+		font-family: $Demi;
+		@include x-rem(font-size, 19px);
+		color: $grey;
+	}
+}
+.career {
+	margin: 13% 0 0;
+	@include r(980) {
+		margin-top: 0;
+	}
+	.career-left {
+		float: left;
+		width: 55%;
+		@include r(479) {
+			float: none;
+			width: 100%;
+			margin-bottom: 10%;
+		}
+	}
+	.career-right {
+		float: left;
+		width: 35%;
+		margin-left: 10%;
+		@include r(479) {
+			float: none;
+			width: 100%;
+			margin-left: 0;
+		}
+	}
+	.career-title {
+		font-family: $Demi;
+		color: $grey;
+		@include x-rem(font-size, 19px);
+		margin-bottom: 8%;
+		.career-img {
+			@include x-rem(height, 30px);
+			margin-bottom: 5%;
+			@include r(479) {
+				@include x-rem(height, 60px);
+				margin-bottom: 3%;
+			}
+			img {
+				max-height: 100%;
+			}
+		}
+	}
+	p {
+		font-family: $Book;
+		color: $grey;
+		@include x-rem(font-size, 19px);
+		margin-bottom: 15%;
+	}
+}
 .btn {
 	display: inline-block;
 	border: 1px solid $blue;
@@ -556,6 +957,17 @@ a {
 	left: 0;
 	z-index: 200;
 	display: none;
+	min-width: 320px;
+	@include r(980) {
+		text-align: center;
+	}
+	.menu-scroll {
+		width: 100%;
+		height: 100%;
+		@include r(980) {
+			overflow-y: auto;
+		}			
+	}
 	.menu__left {
 		width: 46.5325%;
 		float: left;
@@ -563,7 +975,10 @@ a {
 		opacity: 0.5;
 		height: 100%;
 		transform: translateY(-100%);
-		transition: transform 0.5s cubic-bezier(1.000, 0.010, 0.990, 0.470);
+		transition: transform 0.5s cubic-bezier(.89,.42,1,1);
+		@include r(980) {
+			display: none;
+		}
 	}
 	.menu__right {
 		width: 53.4375%;
@@ -571,14 +986,156 @@ a {
 		height: 100%;
 		background-color: $white;
 		padding-left: 5%;
-		padding-top: 5.2rem;
+		@include x-rem(padding-top, 80px);
 		padding-right: 9.375%; // 150px / 1600
 		transform: translateY(100%);
-		transition: transform 0.5s cubic-bezier(1.000, 0.010, 0.990, 0.470);
+		transition: transform 0.5s cubic-bezier(.89,.42,1,1);
+		@include r(1365) {
+			@include x-rem(padding-top, 41px);
+			padding-left: 2%;
+		}
+		.nav {
+			.nav-item {
+				&:not(:first-child) {
+					margin-left: 10.5%;
+				}
+			}
+		}
+		@include r(980) {
+			width: 100%;
+			padding-left: 9.375%;
+			.nav {
+				display: inline-block;
+				width: 100%;
+				margin-bottom: 4%;
+				margin-top: 10%;
+				@include r(735) {
+					margin-top: 20%;
+				}
+				@include r(639) {
+					margin-top: 25%;
+				}
+				@include r(479) {
+					margin-top: 35%;
+				}
+				.nav-item {
+					width: 100%;
+					display: inline-block;
+					@include x-rem(font-size, 27px);
+					font-family: $Bold;
+					padding: 1% 0;
+					&:not(:first-child) {
+						margin-left: 0;
+					}
+				}
+			}
+		}
 	}
 	&.menu-open {
 		.menu__left, .menu__right {
 			transform: translateY(0);
+		}
+	}
+	.social {
+		position: absolute;
+		bottom: 9%;
+		left: 10%;
+		right: 9.375%;
+		@include r(1365) {
+			left: 5%;
+			bottom: 4%;
+		}
+		@include r(980) {
+			.social-item {
+				margin-left: 5%;
+			}
+		}
+	}	
+	.language {
+		display: none;
+		@include r(980) {
+			display: block;
+			position: absolute;
+			@include x-rem(top, 35px);
+			left: 5%;
+		}
+	}
+}
+.nav-main {
+	margin-top: 10%;
+	@include r(980) {
+		margin-top: 0;
+	}
+	.nav-main__overlay {
+		.nav-main_item {
+			display: inline-block;
+			width: 100%;
+			& > a {
+				font-family: $Bold;
+				@include x-rem(font-size, 49px);
+				color: $grey;
+				text-transform: uppercase;
+				padding: 2% 0;
+				display: inline-block;
+				width: 100%;
+				transition: color 0.3s ease-in-out;
+				&:hover, &.active {
+					color: $hover;
+				}
+				@include r(980) {
+					@include x-rem(font-size, 17px);
+					font-family: $Demi;
+					padding: 1% 0;
+				}
+			}
+			ul {
+				@include r(980) {
+					display: none;
+				}
+				li {
+					display: inline-block;
+					&:not(:first-child) {
+						margin-left: 4%;
+					}
+					a {
+						font-family: $Bold;
+						@include x-rem(font-size, 19px);
+						color: $grey;
+						text-transform: uppercase;
+						padding: 6% 0;
+						display: inline-block;
+						width: 100%;
+						transition: color 0.3s ease-in-out;
+						&:hover, &.active {
+							color: $hover;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.social {
+	display: inline-block;
+	.social-item {
+		font-family: $Book;
+		@include x-rem(font-size, 19px);
+		transition: color 0.3s ease-in-out;
+		display: inline-block;
+		&:not(:first-child) {
+			margin-left: 5%;
+		}
+		&.fb {
+			color: $fb;
+		}
+		&.vk {
+			color: $vk;
+		}
+		&.tw {
+			color: $tw;
+		}
+		&:hover {
+			color: $hover;
 		}
 	}
 }

@@ -30,18 +30,26 @@ $(document).ready(function () {
 	}
 
 	function initFullpage() {
-		$('.fullpage').fullpage({
+		var fullpageSettings = {
 			css3: true,
-			easingcss3: 'cubic-bezier(1.000, 0.010, 0.990, 0.470)',
+			easingcss3: 'cubic-bezier(1,.47,1,1)',
 			scrollingSpeed: 1000,
 			fitToSection: true,
 			navigation: true,
 			navigationPosition: 'left',
 			afterLoad: function(anchorLink, index){
+				$('.fullpage').addClass('init');
 				if(index === 1) {
 					$('.menu-left').removeClass('hidden');
 				} else {
 					$('.menu-left').addClass('hidden');
+				}
+				if(index !== 4) {
+					$('.scroll').addClass('hide');
+					$('.footer').removeClass('show');
+				} else {
+					$('.scroll').removeClass('hide');
+					$('.footer').addClass('show');
 				}
 			},
 			onLeave: function(index, newIndex, direction){
@@ -50,18 +58,67 @@ $(document).ready(function () {
 				} else {
 					$('.menu-left').addClass('hidden');
 				}
+				if(newIndex !== 4) {
+					$('.scroll').addClass('hide');
+					$('.footer').removeClass('show');
+				} else {
+					$('.scroll').removeClass('hide');
+					$('.footer').addClass('show');
+				}
 			}
+		}
+		function init() {
+			if(window.matchMedia('(max-width: 980px)').matches){
+				$('.scroll-top').addClass('mobile');
+				if($('.fullpage').hasClass('init')){
+					$.fn.fullpage.destroy('all');
+				}
+			} else {
+				$('.fullpage').removeClass('fp-destroyed');
+				if(!$('html').hasClass('fp-enabled')) {
+					$('.fullpage').fullpage(fullpageSettings);
+					$('.scroll-top').removeClass('mobile');
+				}
+			}
+		} init();
+
+		$(window).on('resize', function(){
+			init();
+		});			
+
+		$('.scroll').on('click', function(){
+			$.fn.fullpage.moveSectionDown();
 		});
 	};
+
+	//moveUp
+	function moveSlideUp() {
+		var sTop = $('.scroll-top');
+
+		sTop.on('click', function() {
+			if(!$(this).hasClass('mobile')) {
+				$.fn.fullpage.moveTo(1);
+			} else {
+				$('html, body').animate({
+					scrollTop: 0
+				}, 850);
+			};
+		})
+	} moveSlideUp();
 
 	//menu toggle
 	function menuToggle() {
 		var menu = $('.menu'),
 			overlay = $('.menu-overlay'),
-			Lside = overlay.find('.menu__left');
+			menuText = menu.find('.menu-left'),
+			Lside = overlay.find('.menu__left'),
+			$body = $('html'),
+			scroll = $('.menu-scroll');
 
 			menu.on('click', function(){
 				if(overlay.hasClass('menu-open')) {
+					menuText.removeClass('hidden');
+					menu.removeClass('open');
 					overlay
 						.removeClass('menu-open')
 						.delay(500)
@@ -71,11 +128,14 @@ $(document).ready(function () {
 						duration: 0,
 						complete: function(){
 							overlay.addClass('menu-open');
+							menuText.addClass('hidden');
+							menu.addClass('open');
 						}
 					})
 				}
 			});
 			Lside.on('click', function(){
+				menuText.removeClass('hidden');
 				overlay
 					.removeClass('menu-open')
 					.delay(5000)
