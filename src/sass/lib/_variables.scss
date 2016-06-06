@@ -6,6 +6,7 @@
 @include font-face('FuturaNewHeavy', "../fonts/FuturaNewHeavy" ,null, null, ttf eot woff2 woff svg);
 @include font-face('FuturaNewCondMedium', "../fonts/FuturaNewCondMedium" ,null, null, ttf eot woff2 woff svg);
 @include font-face('FuturaNewLight', "../fonts/FuturaNewLight" ,null, null, ttf eot woff2 woff svg);
+@include font-face('gautami', "../fonts/gautami" ,null, null, ttf eot woff2 woff svg);
 
 
 $Book: 'FuturaNewBook', $font-stack-helvetica;
@@ -15,6 +16,7 @@ $Demi: 'FuturaNewDemi', $font-stack-helvetica;
 $Heavy: 'FuturaNewHeavy', $font-stack-helvetica;
 $CondMedium: 'FuturaNewCondMedium', $font-stack-helvetica;
 $Light: 'FuturaNewLight', $font-stack-helvetica;
+$Gautami: 'gautami', $font-stack-helvetica;
 
 // colors
 $white: #ffffff;
@@ -28,3 +30,4 @@ $overlay: #8496a8;
 $fb: #3f51b5;
 $vk: #597ba0;
 $tw: #03a9f4;
+$yBorder: #e0e9f1;

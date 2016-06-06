@@ -1,5 +1,6 @@
 @import "../../bower_components/normalize.css/normalize.css";
 @import "../../bower_components/fullpage.js/jquery.fullPage.scss";
+@import "../../bower_components/Swiper/dist/css/swiper.min.css";
 @import "lib/base";
 html {
 	text-size-adjust: 100%;
@@ -222,6 +223,9 @@ a {
 	.header {
 		padding-left: 9.82%;
 		padding-right: 12.82%;
+		@include r(1365) {
+			padding-left: 5.2%;
+		}
 	}
 	@include r(980) {
 		background-color: $white;
@@ -287,7 +291,17 @@ a {
 }
 .footer {	
 	position: relative;
-	padding: 0 9.82%;		
+	padding-left: 9.82%;
+	padding-right: 9.82%;
+	@include clearfix;
+	@include x-rem(padding-top, 80px);
+	@include x-rem(padding-bottom, 80px);
+	@include r(1365) {
+		padding-left: 5.2%;
+		padding-right: 5.2%;
+		@include x-rem(padding-top, 40px);
+		@include x-rem(padding-bottom, 40px);
+	}	
 	@include r(639) {
 		text-align: center;
 		@include x-rem(padding-top, 120px);
@@ -318,6 +332,12 @@ a {
 		}
 		@include r(639) {
 			float: none;
+		}
+	}
+	.scroll-top {
+		display: none;
+		@include r(979) {
+			display: inline-block;
 		}
 	}
 	@include r(639) {
@@ -1297,9 +1317,10 @@ a {
 .wrapper {
 	@include x-rem(padding-top, 72px);
 	padding-left: 9.82%;
-	padding-right: 12.82%;
+	padding-right: 11.82%;
 	@include r(1365) {
 		@include x-rem(padding-top, 30px);
+		padding-left: 5.2%;
 	}
 	@include r(980) {
 		padding-left: 5.2%;
@@ -1339,9 +1360,369 @@ a {
 		font-family: $Book;
 		@include x-rem(font-size, 19px);
 		color: $grey;
-		margin-bottom: 4%;
+		@include x-rem(margin-bottom, 65px);
+		@include r(735) {
+			@include x-rem(margin-bottom, 30px);
+		}
 		&.lead {
 			font-family: $Demi;
+			padding-right: 1%;
+		}
+	}
+}
+.history {
+	@include x-rem(margin-bottom, 80px);
+	font-size: 0;
+	@include r(735) {
+		@include x-rem(margin-bottom, 30px);
+	}
+	@include clearfix;
+	.history__head {
+		font-family: $Bold;
+		@include x-rem(font-size, 72px);
+		@include x-rem(line-height, 72px);
+		@include x-rem(margin, -7px 0 0);
+		color: $hover;
+		display: inline-block;
+		vertical-align: top;
+		width: 30%;
+		@include r(735) {
+			width: 100%;
+			margin: 0 0 3% 0;
+		}
+	}
+	.history__body {
+		display: inline-block;
+		vertical-align: top;
+		width: 63%;
+
+		p {
+			@include x-rem(margin-bottom, 0px);
+			&:not(:last-of-type) {
+				@include x-rem(margin-bottom, 30px);
+			}
+		}
+		@include r(735) {
+			width: 100%;
+		}
+	}
+}
+.blockquote {
+	display: inline-block;
+	width: 100%;
+	position: relative;
+	@include x-rem(margin-bottom, 80px);
+	font-size: 0;
+	@include r(735) {
+		@include x-rem(margin-bottom, 30px);
+	}
+	&.small__blockquote {
+		padding-left: 30%;
+		// .overlay {
+		// 	width: 70.7%;
+		// }
+		@include r(735) {
+			padding-left: 0;
+		}
+	}
+	.blockquote__head {
+		font-family: $Medium;
+		@include x-rem(font-size, 36px);
+		@include x-rem(line-height, 36px);
+		margin-bottom: 5%;
+		color: $grey;
+		position: relative;
+		&::before {
+			content: '“';
+			font-family: $Gautami;
+			@include x-rem(font-size, 300px);
+			position: absolute;
+			@include x-rem(top, -30px);
+			@include x-rem(left, -30px);
+			color: #e6f0f8;
+		}
+	}
+	.blockquote__body {
+		.author {
+			.author__img {
+				@include x-rem(width, 56px);
+				@include x-rem(height, 56px);
+				float: left;
+				img {
+					max-height: 100%;
+					border-radius: 100%;
+				}
+			}
+		}
+	}
+}
+.author {
+	@include clearfix;
+	.overlay {
+		@include x-rem(padding-top, 5px);
+	}
+	.author__img {
+		margin-right: 6%;
+		img {
+			max-width: 100%;
+			display: block;
+		}
+	}
+	.author__name {
+		font-family: $Medium;
+		@include x-rem(font-size, 19px);
+		color: $grey;
+		@include x-rem(line-height, 19px);
+	}
+	.author__position {
+		font-family: $Book;
+		@include x-rem(font-size, 19px);
+		color: $grey;
+	}
+}
+.counter__list {
+	@include x-rem(margin-bottom, 80px);
+	font-size: 0;
+	@include r(735) {
+		@include x-rem(margin-bottom, 30px);
+	}
+	font-size: 0;
+	.counter__list-item {
+		width: 25%;
+		padding-right: 3%;
+		display: inline-block;
+		vertical-align: top;
+		@include r(980) {
+			width: 50%;
+		}
+		p {
+			margin-bottom: 0;
+			&:not(:last-of-type) {
+				@include x-rem(margin-bottom, 15px);
+			}
+		}
+	}
+	.counter__list-number {
+		font-family: $Demi;
+		@include x-rem(font-size, 50px);
+		color: $hover;
+	}
+}
+.double {
+	@include x-rem(margin-bottom, 80px);
+	font-size: 0;
+	@include r(735) {
+		@include x-rem(margin-bottom, 30px);
+	}
+	font-size: 0;
+	.double__item {
+		display: inline-block;
+		vertical-align: top;
+		width: 50%;
+		@include r(735) {
+			width: 100%;
+		}
+		p {
+			margin-bottom: 0;
+		}
+	}
+	.title {
+		font-family: $Light;
+		font-weight: 100;
+		color: $grey;
+		@include x-rem(font-size, 36px);
+		@include x-rem(line-height, 36px);
+		@include r(735) {
+			margin-bottom: 5%;
+		}
+	}
+}
+.years {
+	@include x-rem(margin-bottom, 80px);
+	font-size: 0;
+	@include r(735) {
+		@include x-rem(margin-bottom, 30px);
+	}
+	font-size: 0;
+	.years__side {
+		display: inline-block;
+		vertical-align: top;
+		width: 50%;
+		&:not(:last-of-type) {
+			padding-right: 5%;
+		}
+		@include r(735) {
+			width: 100%;
+		}
+	}
+	.years__item {
+		@include x-rem(margin-bottom, 20px);
+		@include x-rem(padding-bottom, 20px);
+		border-bottom: 1px solid $yBorder;
+		span {
+			font-family: $Demi;
+			@include x-rem(font-size, 19px);
+			color: $grey;
+			@include x-rem(margin-bottom, 10px);
+			display: inline-block;
+		}
+		p {
+			margin-bottom: 0;
+			&:not(:last-of-type) {
+				@include x-rem(margin-bottom, 15px);
+			}
+		}
+	}
+}
+.gallery {
+	@include x-rem(margin-bottom, 80px);
+	font-size: 0;
+	position: relative;
+	@include r(735) {
+		@include x-rem(margin-bottom, 30px);
+	}
+	.gallery__container {
+		overflow: hidden;
+		.swiper-main {
+			@include r(860) {
+				@include x-rem(margin-bottom, 30px);
+			}
+			.swiper-slide {
+				img {
+					max-width: 100%;
+				}
+			}
+		}
+		.swiper-caption {
+			p {
+				margin-bottom: 0;
+			}
+		}
+		.swiper__caprion {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			width: 41%;
+			padding-left: 5%;
+			@include r(860) {
+				position: relative;
+				padding-left: 0;
+				width: 100%;
+			}
+			.swiper__navigation {
+				display: inline-block;
+				position: relative;
+				width: 100%;
+				text-align: left;
+				.swiper-pagination {
+					position: relative;
+					display: inline-block;
+					vertical-align: top;
+					width: 30%;
+					text-align: left;
+					@include r(860) {
+						width: auto;
+					}
+					.swiper-pagination-current {
+						font-family: $Demi;
+						@include x-rem(font-size, 50px);
+						color: $hover;
+					}
+					.swiper-pagination-total {
+						font-family: $Demi;
+						@include x-rem(font-size, 19px);
+						color: $grey;
+						position: relative;
+						@include x-rem(top, -25px);
+						padding-left: 5px;
+					}
+				}
+				.swiper-arrow {
+					position: relative;
+					@include x-rem(width, 27px);
+					display: inline-block;
+					vertical-align: top;
+					@include x-rem(margin-top, 3px);
+					@include r(860) {
+						@include x-rem(padding-left, 15px);
+					}
+					& > div {
+						position: relative;
+						left: auto;
+						right: auto;
+						margin-top: 0;
+					}
+					.swiper-button-next {
+						@include x-rem(width, 27px);
+						@include x-rem(height, 15px);
+						background-image: url(../img/icons/swiper-next.png);
+						background-size: cover;
+						@include x-rem(margin-top, 5px);
+					}
+					.swiper-button-prev {
+						@include x-rem(width, 27px);
+						@include x-rem(height, 15px);
+						background-image: url(../img/icons/swiper-prev.png);
+						background-size: cover;
+					}
+				}
+			}
+		}
+	}
+	.gallery__caption {
+		float: right;
+		width: 41%;
+		padding-left: 5%;
+		@include clearfix;
+		@include r(860) {
+			width: 100%;
+			float: none;
+			@include x-rem(margin-bottom, 30px);
+			padding-left: 0;
+		}
+		.title {
+			font-family: $Light;
+			font-weight: 100;
+			@include x-rem(font-size, 36px);
+			color: $grey;
+			@include x-rem(margin-top, -7px);
+		}
+	}
+}
+.next__page {
+	.next__page-head {
+		font-family: $Light;
+		@include x-rem(font-size, 11px);
+		font-weight: 100;
+		color: $grey;
+		@include x-rem(margin-bottom, 20px);
+		text-transform: uppercase;
+	}
+	a {
+		font-family: $Bold;
+		@include x-rem(font-size, 50px);
+		color: $grey;
+		transition: color 0.3s ease-in-out;
+		@include r(479) {
+			@include x-rem(font-size, 35px);
+		}
+		.icon {
+			// @include x-rem(line-height, 50px);
+			@include x-rem(width, 27px);
+			@include x-rem(height, 15px);
+			background-image: url(../img/icons/arrow.png);
+			background-size: cover;
+			display: inline-block;
+			vertical-align: middle;
+			opacity: 0;
+			transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+		}
+		&:hover {
+			color: $hover;
+			.icon {
+				opacity: 1;
+				transform: translateX(50%);
+			}
 		}
 	}
 }

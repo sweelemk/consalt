@@ -145,4 +145,24 @@ $(document).ready(function () {
 		
 	} switcher();
 
+	//swiper 
+	function SwiperGallery() {
+		var swiperMain = new Swiper('.swiper-main', {
+			nextButton: '.swiper-button-next',
+			prevButton: '.swiper-button-prev',
+			pagination: '.swiper-pagination',
+			paginationType: 'fraction'
+		});
+		var swiperCaption = new Swiper('.swiper-caption', {
+			
+		});
+		swiperMain.params.control = [swiperCaption];
+		swiperCaption.params.control = [swiperMain];
+
+		$(window).on('resize', function(){
+			swiperCaption.onResize();
+			swiperMain.onResize();
+		});
+	} SwiperGallery();
+
 })
