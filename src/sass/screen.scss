@@ -1341,6 +1341,7 @@ a {
 			position: absolute;
 			right: -50%;
 			top: -11px;
+			@include x-rem(top, -11px);
 			font-family: $Light;
 			font-weight: 100;
 			color: $grey;
@@ -1385,7 +1386,7 @@ a {
 		color: $hover;
 		display: inline-block;
 		vertical-align: top;
-		width: 30%;
+		width: 25%;
 		@include r(735) {
 			width: 100%;
 			margin: 0 0 3% 0;
@@ -1417,29 +1418,100 @@ a {
 		@include x-rem(margin-bottom, 30px);
 	}
 	&.small__blockquote {
-		padding-left: 30%;
-		// .overlay {
-		// 	width: 70.7%;
-		// }
+		.overlay {
+			overflow: visible;
+			float: right;
+			width: 75%;
+			@include r(735) {
+				width: 100%;
+				padding-left: 5%;
+				@include x-rem(margin-top, 60px);
+			}
+		}
+		.author {
+			.overlay {
+				overflow: hidden;
+				width: auto;
+				float: none;
+				padding-left: 0;
+			}
+		}
 		@include r(735) {
 			padding-left: 0;
+		}
+	}
+	&.employee__blockquote {
+		@include r(735) {
+			padding-left: 5%;
+		}
+		.author__img {
+			//@include x-rem(max-width, 264px);
+			width: 30.5%;
+			float: left;
+			display: inline-block;
+			@include r(735) {
+				width: 100%;
+				float: none;
+				@include x-rem(max-width, 264px);
+				@include x-rem(margin-bottom, 10px);
+			}
+			img {
+				max-width: 100%;
+			}
+		}
+		.author {
+			.overlay {
+				padding-left: 0;
+				width: 100%;
+			}
+		}
+		.overlay {
+			padding-left: 5%;
+			overflow: visible;
+			float: right;
+			width: 65%;
+			@include r(735) {
+				width: 100%;
+				padding-left: 0;
+				@include x-rem(margin-top, 60px);
+			}
+		}
+		.author {
+			.overlay {
+				overflow: hidden;
+				width: auto;
+				float: none;
+				padding-left: 0;
+				margin-top: 0;
+			}
 		}
 	}
 	.blockquote__head {
 		font-family: $Medium;
 		@include x-rem(font-size, 36px);
-		@include x-rem(line-height, 36px);
 		margin-bottom: 5%;
 		color: $grey;
 		position: relative;
+		z-index: 2;
 		&::before {
 			content: '“';
 			font-family: $Gautami;
 			@include x-rem(font-size, 300px);
 			position: absolute;
-			@include x-rem(top, -30px);
-			@include x-rem(left, -30px);
+			@include x-rem(top, -150px);
+			@include x-rem(left, -65px);
 			color: #e6f0f8;
+			z-index: -1;
+			@include r(735) {
+				@include x-rem(font-size, 250px);
+				@include x-rem(top, -120px);
+				@include x-rem(left, -54px);
+			}
+			@include r(480) {
+				@include x-rem(font-size, 200px);
+				@include x-rem(top, -95px);
+				@include x-rem(left, -40px);
+			}
 		}
 	}
 	.blockquote__body {
@@ -1460,6 +1532,7 @@ a {
 	@include clearfix;
 	.overlay {
 		@include x-rem(padding-top, 5px);
+		overflow: hidden;
 	}
 	.author__img {
 		margin-right: 6%;
@@ -1723,6 +1796,53 @@ a {
 				opacity: 1;
 				transform: translateX(50%);
 			}
+		}
+	}
+}
+.employee {
+	@include x-rem(margin-bottom, 80px);
+	.blockquote {
+		@include x-rem(margin-bottom, 57px);
+	}
+	.employee__list {
+		font-size: 0;
+		margin-left: -2.83%;
+		@include r(735) {
+			padding-left: 5%;
+		}
+	}
+	.employee__list-item {
+		display: inline-block;
+		vertical-align: top;
+		width: 29.4%;
+		margin-left: 2.83%;
+		@include r(735) {
+			@include x-rem(min-width, 264px);
+		}
+		@include x-rem(margin-bottom, 57px);
+		@include r(735) {
+			width: 47%;
+		}
+		.employee__img {
+			width: 100%;
+			@include x-rem(margin-bottom, 20px);
+			@include r(735) {
+				@include x-rem(max-width, 264px);
+				width: 100%;
+			}
+			img {
+				max-width: 100%;
+				display: block;
+			}
+		}
+		.employee__name {
+			font-family: $Demi;
+			@include x-rem(font-size, 18px);
+			color: $grey;
+			@include x-rem(margin-bottom, 7px);
+		}
+		p {
+			margin-bottom: 0;
 		}
 	}
 }
