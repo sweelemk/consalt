@@ -1339,8 +1339,7 @@ a {
 		&::after {
 			content: '/';
 			position: absolute;
-			right: -50%;
-			top: -11px;
+			@include x-rem(right, -20px);
 			@include x-rem(top, -11px);
 			font-family: $Light;
 			font-weight: 100;
@@ -1362,6 +1361,7 @@ a {
 		font-family: $Book;
 		@include x-rem(font-size, 19px);
 		color: $grey;
+		line-height: 1.45;
 		@include x-rem(margin-bottom, 65px);
 		@include r(735) {
 			@include x-rem(margin-bottom, 30px);
@@ -1589,6 +1589,39 @@ a {
 		@include x-rem(margin-bottom, 30px);
 	}
 	font-size: 0;
+	&.double-img {
+		@include x-rem(padding-top, 20px);
+		@include x-rem(margin-bottom, 40px);
+		@include r(735) {
+			@include x-rem(margin-bottom, 20px);
+		}
+		img {
+			max-width: 100%;
+		}
+		.double__item {
+			&:first-child {
+				padding-right: 5%;
+				@include r(735) {
+					padding-right: 0;
+					@include x-rem(margin-bottom, 20px);
+				}
+			}
+		}
+	}
+	&.double-25 {
+		.double__item {
+			width: 75%;
+			&:first-child {
+				width: 25%;
+				@include r(735) {
+					width: 100%;
+				}
+			}
+			@include r(735) {
+				width: 100%;
+			}
+		}
+	}
 	.double__item {
 		display: inline-block;
 		vertical-align: top;
@@ -1898,94 +1931,242 @@ a {
 		@include x-rem(margin-bottom, 30px);
 		margin-left: 0;
 	}
-	.news-item {
+	& + .pagination {
+		@include x-rem(margin-top, -40px);
+	}
+}
+.news-item {
+	display: inline-block;
+	vertical-align: top;
+	width: 50%;
+	padding-right: 6.4%;
+	margin-bottom: 6.4%;
+		@include r(479) {
+			width: 100%;
+			padding-right: 0;
+			@include x-rem(margin-bottom, 60px);
+		}		
+	a {
 		display: inline-block;
-		vertical-align: top;
-		width: 50%;
-		padding-right: 6.4%;
-		margin-bottom: 6.4%;
-			@include r(479) {
-				width: 100%;
-				padding-right: 0;
-				@include x-rem(margin-bottom, 60px);
-			}		
-		a {
-			display: inline-block;
-			position: relative;
-			z-index: 2;
+		position: relative;
+		z-index: 2;
+		&::after {
+			position: absolute;
+			content:'';
+			width: 100%;
+			background-color: $scroll;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			z-index: -1;
+			opacity: 0;
+			transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+		}
+		&::before {
+			content: '';
+			@include x-rem(width, 27px);
+			@include x-rem(height, 16px);
+			background-image: url(../img/icons/arrow.png);
+			background-size: cover;
+			position: absolute;
+			@include x-rem(bottom, -10px);
+			@include x-rem(right, 10px);
+			opacity: 0;
+			transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+		}
+		&:hover {
 			&::after {
-				position: absolute;
-				content:'';
-				width: 100%;
-				background-color: $scroll;
-				top: 0;
-				left: 0;
-				bottom: 0;
-				z-index: -1;
-				opacity: 0;
-				transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+				transform: translate(7%, 7%);
+				opacity: 1;
 			}
 			&::before {
-				content: '';
-				@include x-rem(width, 27px);
-				@include x-rem(height, 16px);
-				background-image: url(../img/icons/arrow.png);
-				background-size: cover;
-				position: absolute;
-				@include x-rem(bottom, -10px);
-				@include x-rem(right, 10px);
-				opacity: 0;
-				transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+				transform: translateX(50%);
+				opacity: 1;
 			}
-			&:hover {
-				&::after {
-					transform: translate(7%, 7%);
-					opacity: 1;
-				}
-				&::before {
-					transform: translateX(50%);
-					opacity: 1;
+			.news-name {
+				color: $hover;
+			}
+			@include r(980) {
+				&::before, &::after {
+					transform: none;
+					opacity: 0;
 				}
 				.news-name {
-					color: $hover;
+					color: $grey;
 				}
-				@include r(980) {
-					&::before, &::after {
-						transform: none;
-						opacity: 0;
-					}
-					.news-name {
-						color: $grey;
+			}
+		}
+	}
+	.news-img {
+		@include x-rem(margin-bottom, 19px);
+		img {
+			max-width: 100%;
+		}
+	}
+	data {
+		font-family: $Light;
+		@include x-rem(font-size, 12px);
+		text-transform: uppercase;
+		color: $grey;
+		@include x-rem(letter-spacing, 0.5px);
+		@include x-rem(margin-bottom, 9px);
+		display: inline-block;
+	}
+	.news-name {
+		font-family: $Demi;
+		@include x-rem(font-size, 19px);
+		color: $grey;
+		transition: color 0.3s ease-in-out;
+		@include x-rem(margin-bottom, 9px);
+	}
+	span {
+		font-family: $Book;
+		@include x-rem(font-size, 19px);
+		color: $grey;
+	}
+}
+.pagination {
+	font-size: 0;
+	max-width: 80%;
+	text-align: center;
+	@include x-rem(margin-bottom, 80px);
+	font-size: 0;
+	position: relative;
+	@include r(980) {
+		max-width: 85%;
+	}
+	@include r(735) {
+		@include x-rem(margin-bottom, 30px);
+		margin-left: 0;
+		max-width: 95%;
+	}
+	.pagin-arrow {
+		display: inline-block;
+		vertical-align: middle;
+		@include x-rem(padding, 5px 10px);
+		@include x-rem(margin, 0 5px);
+		@include x-rem(line-height, 19px);
+		i {
+			display: block;
+			@include x-rem(width, 11px);
+			@include x-rem(height, 11px);
+			path {
+				fill: $grey;
+				transition: fill 0.3s ease-in-out;
+			}		
+		}
+		&:hover {
+			i {
+				path {
+					fill: $hover;
+				}
+			}
+		}
+		&.disabled {
+			opacity: 0.5;
+			pointer-events: none;
+			&:hover {
+				i {
+					path {
+						fill: $grey;
 					}
 				}
 			}
 		}
-		.news-img {
-			@include x-rem(margin-bottom, 19px);
-			img {
-				max-width: 100%;
-			}
-		}
-		data {
-			font-family: $Light;
-			@include x-rem(font-size, 12px);
-			text-transform: uppercase;
-			color: $grey;
-			@include x-rem(letter-spacing, 0.5px);
-			@include x-rem(margin-bottom, 9px);
+	}
+	.pagin-list {
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 0;
+		.pagin-item {
 			display: inline-block;
-		}
-		.news-name {
 			font-family: $Demi;
 			@include x-rem(font-size, 19px);
+			@include x-rem(line-height, 19px);
 			color: $grey;
-			transition: color 0.3s ease-in-out;
-			@include x-rem(margin-bottom, 9px);
+			@include x-rem(padding, 5px 10px);
+			@include x-rem(margin, 0 5px);
+			background-color: transparent;
+			transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+			&.active {
+				background-color: $scroll;
+				color: $hover;
+			}
+			&:hover {
+				color: $hover;
+			}
 		}
 		span {
-			font-family: $Book;
-			@include x-rem(font-size, 19px);
-			color: $grey;
+			&.pagin-item {
+				user-select: none;
+				&:hover, &.active {
+					background-color: transparent;
+					color: $grey;
+				}
+			}
+		}
+	}
+}
+.h1 {
+	font-family: $Light;
+	@include x-rem(font-size, 40px);
+	color: $grey;
+	font-weight: 100;
+	@include x-rem(margin, 0 0 40px 0);
+}
+.container {
+	&.news__inner {
+		p {
+			@include x-rem(margin, 0 0 25px 0);
+		}
+	}
+}
+.news__inner {
+	.quote {
+		@include x-rem(margin, 0 0 40px 0);
+	}
+}
+.quote {
+	@include x-rem(margin, 0 0 80px 0);
+	background-color: $scroll;
+	text-align: center;
+	@include x-rem(padding-top, 30px);
+	@include x-rem(padding-bottom, 30px);
+	padding-left: 10%;
+	padding-right: 10%;
+	@include r(735) {
+		padding-left: 5%;
+		padding-right: 5%;
+		@include x-rem(margin, 0 0 30px 0);
+	}
+	p {
+		font-family: $Light;
+		font-weight: 100;
+		@include x-rem(font-size, 26px);
+		margin-bottom: 0;
+	}
+}
+.link__back {
+	@include x-rem(margin, 0 0 80px 0);
+	@include r(735) {
+		@include x-rem(margin, 0 0 50px 0);
+	}
+	a {
+		font-family: $Demi;
+		@include x-rem(font-size, 19px);
+		color: $grey;
+		transition: color 0.3s ease-in-out;
+		i {
+			display: inline-block;
+			vertical-align: middle;
+			@include x-rem(width, 27px);
+			@include x-rem(height, 15px);
+			background-image: url(../img/icons/swiper-prev.png);
+			background-size: cover;
+			@include x-rem(margin-right, 25px);
+		}
+		&:hover {
+			color: $hover;
 		}
 	}
 }
