@@ -198,7 +198,7 @@ a {
 	}
 	@include r(639) {
 		&::after {
-			height: 50%;
+			height: 47%;
 		}
 	}
 	.head {
@@ -304,7 +304,7 @@ a {
 	}	
 	@include r(639) {
 		text-align: center;
-		@include x-rem(padding-top, 120px);
+		@include x-rem(padding-top, 72px);
 	}
 	.copyright {
 		float: left;
@@ -343,7 +343,7 @@ a {
 	@include r(639) {
 		.scroll-top {
 			position: absolute;
-			@include x-rem(top, 80px);
+			@include x-rem(top, 16px);
 			left: 50%;
 			transform: translateX(-50%);
 		}
@@ -910,6 +910,27 @@ a {
 		font-family: $Book;
 		@include x-rem(font-size, 19px);
 		color: $lgrey;
+	}
+	&.business-inner {
+		@include x-rem(margin-bottom, 80px);
+		@include r(735) {
+			@include x-rem(margin-bottom, 0px);
+		}
+		.business-item {
+			width: 22%;
+			@include x-rem(margin-bottom, 40px);
+			@include x-rem(padding-bottom, 10px);
+			&::after {
+				height: auto;
+				bottom: 0;
+			}
+			@include r(980) {
+				width: 30%;
+			}
+			@include r(640) {
+				width: 46%;
+			}
+		}
 	}
 }
 .clients {
@@ -1622,6 +1643,15 @@ a {
 			}
 		}
 	}
+	&.double-text {
+		columns: 2;
+		@include r(735) {
+			columns: auto;
+		}
+		p {
+			padding-right: 10%;
+		}
+	}
 	.double__item {
 		display: inline-block;
 		vertical-align: top;
@@ -2115,7 +2145,7 @@ a {
 	@include x-rem(margin, 0 0 40px 0);
 }
 .container {
-	&.news__inner {
+	&.news__inner, &.solution {
 		p {
 			@include x-rem(margin, 0 0 25px 0);
 		}
@@ -2132,8 +2162,8 @@ a {
 	text-align: center;
 	@include x-rem(padding-top, 30px);
 	@include x-rem(padding-bottom, 30px);
-	padding-left: 10%;
-	padding-right: 10%;
+	padding-left: 8%;
+	padding-right: 8%;
 	@include r(735) {
 		padding-left: 5%;
 		padding-right: 5%;
