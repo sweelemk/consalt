@@ -694,6 +694,7 @@ a {
 			display: none;
 		}
 		.news-item {
+			width: 100%;
 			data {
 				font-family: $Book;
 				@include x-rem(font-size, 19px);
@@ -841,7 +842,7 @@ a {
 		width: 30%;
 		vertical-align: top;
 		margin-right: 3.33%;
-		padding-bottom: 10.33%;
+		padding-bottom: 5.33%;
 		margin-bottom: 3%;
 		position: relative;
 		@include r(980) {
@@ -857,7 +858,8 @@ a {
 		&::after {
 			content: '';
 			width: 85%;
-			@include x-rem(height, 200px);
+			// @include x-rem(height, 200px);
+			bottom: 0;
 			background-color: $scroll;
 			position: absolute;
 			top: -10px;
@@ -1748,7 +1750,43 @@ a {
 		@include x-rem(font-size, 36px);
 		@include x-rem(line-height, 36px);
 		@include r(735) {
-			margin-bottom: 5%;
+			@include x-rem(margin, 0 0 40px 0);
+		}
+	}
+	.clients {
+		margin: 0;
+		.clients-item {
+			@include x-rem(margin-bottom, 35px);
+			@include x-rem(padding-bottom, 25px);
+			&::after {
+				@include x-rem(top, -20px);
+				@include x-rem(bottom, -15px);
+				height: auto;
+			}
+			@include r(735) {
+				@include x-rem(margin-bottom, 20px);
+				padding-right: 2%;
+			}
+		}
+		.head {
+			height: auto;
+			&::after {
+				@include x-rem(bottom, -25px);
+			}
+			img {
+				position: relative;
+				top: 0;
+				transform: none;
+			}
+		}
+	}
+	.solutions {
+		margin: 0;
+		.solutions-item {
+			@include r(735) {
+				@include x-rem(margin-bottom, 40px);
+				padding-right: 2%;
+			}
 		}
 	}
 }
@@ -2275,6 +2313,28 @@ a {
 		}
 		&:hover {
 			color: $hover;
+		}
+	}
+}
+.other__case {
+	.title {
+		font-family: $Light;
+		@include x-rem(font-size, 40px);
+		color: $grey;
+		font-weight: 100;
+		@include x-rem(margin, 0 0 40px 0);
+	}
+	.business {
+		margin: 0;
+		.business-item {
+			width: 21.5%;
+			padding-bottom: 0;
+			@include r(735) {
+				width: 30%;
+			}
+			@include r(479) {
+				width: 46%;
+			}
 		}
 	}
 }
