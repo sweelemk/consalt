@@ -1081,31 +1081,32 @@ a {
 		}
 		// &:nth-of-type(3n), &:nth-of-type(4n)
 		.tooltip {
-			position: absolute;
-			bottom: 70%;
-			left: 30%;
-			background-color: $white;
-			padding: 18%;
-			@include x-rem(width, 330px);
-			box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.11);
-			z-index: 3;
-			opacity: 0;
-			transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-			transform: translateY(-15%);
-			visibility: hidden;
-			p {
-				@include x-rem(font-size, 16px);
-				@include x-rem(letter-spacing, 0.7px);
-				margin-bottom: 0;
-			}
+			// position: absolute;
+			display: none;
+			// bottom: 70%;
+			// left: 30%;
+			// background-color: $white;
+			// padding: 18%;
+			// @include x-rem(width, 330px);
+			// box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.11);
+			// z-index: 3;
+			// opacity: 0;
+			// transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+			// transform: translateY(-15%);
+			// visibility: hidden;
+			// p {
+			// 	@include x-rem(font-size, 16px);
+			// 	@include x-rem(letter-spacing, 0.7px);
+			// 	margin-bottom: 0;
+			// }
 		}
-		&:hover {
-			.tooltip {
-				opacity: 1;
-				transform: translateY(0);
-				visibility: visible;
-			}
-		}
+		// &:hover {
+		// 	.tooltip {
+		// 		opacity: 1;
+		// 		transform: translateY(0);
+		// 		visibility: visible;
+		// 	}
+		// }
 	}
 	.head {
 		position: relative;
@@ -1126,6 +1127,23 @@ a {
 		font-family: $Demi;
 		@include x-rem(font-size, 19px);
 		color: $grey;
+	}
+}
+.tooltipster-base {
+	@include x-rem(width, 330px);
+	box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.11);
+	border: none;
+	.tooltipster-content {
+		background-color: $white;
+		padding: 9%;
+		font-family: $Book;
+		@include x-rem(font-size, 16px);
+		@include x-rem(letter-spacing, 0.7px);
+		color: $grey;
+		line-height: 1.4;
+	}
+	.tooltipster-arrow {
+		display: none;
 	}
 }
 .career {
@@ -1766,7 +1784,7 @@ a {
 			}
 			@include r(735) {
 				@include x-rem(margin-bottom, 20px);
-				padding-right: 2%;
+				padding-right: 10%;
 			}
 		}
 		.head {
@@ -1787,6 +1805,15 @@ a {
 			@include r(735) {
 				@include x-rem(margin-bottom, 40px);
 				padding-right: 2%;
+			}
+		}
+	}
+	.business {
+		margin: 0;
+		.business-item {
+			width: 30%;
+			@include r(479) {
+				width: 45%;
 			}
 		}
 	}
@@ -2336,6 +2363,38 @@ a {
 			@include r(479) {
 				width: 46%;
 			}
+		}
+	}
+}
+.list__line {
+	@include x-rem(margin, 0 0 80px 0);
+	@include r(735) {
+		@include x-rem(margin, 0 0 0 0);
+	}
+	font-size: 0;
+	.list__line-item {
+		display: inline-block;
+		vertical-align: top;
+		width: 25%;
+		padding-right: 5%;
+		@include x-rem(padding-top, 20px);
+		@include r(735) {
+			width: 50%;
+			@include x-rem(margin, 0 0 50px 0);
+		}
+		position: relative;
+		&::before {
+			content: '';
+			width: 30%;
+			@include x-rem(height, 4px);
+			background-color: $hover;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		p {
+			@include x-rem(font-size, 19px);
+			margin-bottom: 0;
 		}
 	}
 }
