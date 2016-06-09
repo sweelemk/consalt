@@ -190,4 +190,97 @@ $(document).ready(function () {
 			});
 	} tipInit();
 
+	//dropzone
+	function dropFile() {
+		var dropfile = $("#mydropzone1");
+
+		if(dropfile.length) {
+			Dropzone.options.mydropzone = {
+				// init: function() {
+				// 	this.on("addedfile", function(file) { });
+				// 	this.on("success", function(file) {
+				// 	 });
+				// 	this.on("removedfile", function(file) {
+				// 		// $.ajax({
+				// 		// 	type: "POST",
+				// 		// 	url: "/fileupl.php",
+				// 		// 	data: "del="+file['name'],
+				// 		// 	dataType: "html"
+				// 		// });
+				// 	 });
+				// },
+				accept: function(file, done) {
+					var re = /(?:\.([^.]+))?$/;
+					var ext = re.exec(file.name)[1];
+					ext = ext.toUpperCase();
+					if ( ext == "DOC" || ext == "DOCX" || ext == "PDF") {
+						done();
+					}
+					else { 
+						done("Используйте пожалуйста .doc, docx или .pdf.");
+					}
+				},
+				uploadMultiple: false,
+				paramName: "file",
+				maxFilesize: 15,
+				dictDefaultMessage: "",
+				addRemoveLinks: true,
+				dictRemoveFile: '',
+				createImageThumbnails: true,
+				thumbnailWidth: 73,
+				thumbnailHeight: 68,
+				dictInvalidFileType: 'Данный формат файла не поддерживается.',
+				previewTemplate: '<div class="dz-preview dz-file-preview"><div class="dz-details"><img data-dz-thumbnail /></div><div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div><div class="dz-success-mark"><span>✔</span></div><div class="dz-error-mark"><span>✘</span></div><div class="dz-error-message"><span data-dz-errormessage></span></div></div>'
+			}
+		};
+	} dropFile();
+
+	//popup
+	
+	$('[data-popup]').each(function() {
+		var _ = $(this);
+
+		_.on('click', function(e) {
+			popup($(this).data('popup'));
+			e.preventDefault();
+		});
+	});
+
+
+	function popup(selector) {
+		var popupSelector = $('.' + selector),
+			innerSelector = popupSelector.find('.popup'),
+			duration = 500,
+			close = popupSelector.find('.close'),
+			html = $('html');
+
+		popupSelector
+			.fadeIn({
+				duration: duration,
+				start: function(){
+					html.addClass('hidden');
+				},
+				complete: function(){
+					$(this).addClass('visible');
+				}
+			});
+
+		innerSelector.on('click', function(event){
+			event.stopPropagation();
+		});
+
+		close.add(popupSelector).on('click', function(){
+			if(!popupSelector.hasClass('visible')) return;
+
+			popupSelector
+				.fadeOut({
+					duration: duration,
+					complete: function(){
+						$(this).removeClass('visible');
+						html.removeClass('hidden');
+					}
+				});
+		});
+	};
+
 })

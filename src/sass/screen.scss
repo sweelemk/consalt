@@ -1748,7 +1748,21 @@ a {
 			columns: auto;
 		}
 		p {
-			padding-right: 10%;
+			padding-right: 7%;
+		}
+	}
+	&.double-summary {
+		.double__item {
+			&:first-child {
+				padding-right: 10%;
+			}
+			@include r(735) {
+				padding-right: 0;
+				@include x-rem(margin-bottom, 20px);
+			}
+			p {
+				@include x-rem(margin-bottom, 20px);
+			}
 		}
 	}
 	.double__item {
@@ -2475,5 +2489,192 @@ a {
 		@include x-rem(margin, 0 0 3px 0);
 		display: inline-block;
 		width: 100%;
+	}
+}
+.point {
+	li {
+		position: relative;
+		font-family: $Book;
+		@include x-rem(font-size, 19px);
+		color: $grey;
+		@include x-rem(margin-bottom, 12px);
+		@include x-rem(padding-left, 20px);
+		&::after {
+			content: '';
+			@include x-rem(width, 6px);
+			@include x-rem(height, 6px);
+			background-color: $hover;
+			position: absolute;
+			left: 0;
+			@include x-rem(top, 12px);
+		}
+	}
+}
+.double {
+	.btn {
+		@include x-rem(margin-bottom, 20px);
+	}
+	.double__item {
+		.managers {
+			max-width: 100%;
+			margin: 0;
+			.managers-item {
+				padding: 0;
+			}
+		}
+	}
+}
+.popup-btn {
+	display: inline-block;
+	span {
+		font-family: $Book;
+		@include x-rem(font-size, 19px);
+		color: $hover;
+		border-bottom: 1px dashed;
+	}
+}
+.dropzone {
+	@include x-rem(margin-bottom, 30px);
+	.drop__title {
+		position: relative;
+		display: inline-block;		
+		@include x-rem(margin-left, 20px);
+		&::after {
+			content: '';
+			width: 13px;
+			height: 23px;
+			@include x-rem(width, 14px);
+			@include x-rem(height, 24px);
+			background-image: url(../img/icons/clip.png);
+			background-size: contain;
+			position: absolute;
+			top: 0;
+			@include x-rem(left, -20px);
+		}
+		font-family: $Book;
+		@include x-rem(font-size, 18px);
+		color: #ccc;
+		span {
+			color: $white;
+			border-bottom: 1px dashed;
+		}
+	}
+}
+.popup__wrap {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(132,150,168,.5);
+	text-align: center;
+	padding: 0 5.2%;
+	z-index: 205;
+	.popup__layer {
+		position: fixed;
+		max-width: 708px;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		height: 100%;
+		width: 100%;
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			height: 100%;
+			width: 50%;
+			background-color: $grey;
+			transform: translateY(-100%);
+			transition: transform 0.3s cubic-bezier(.89,.42,1,1);
+			z-index: -1;
+		}
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 50%;
+			background-color: $grey;
+			transform: translateY(100%);
+			transition: transform 0.3s cubic-bezier(.89,.42,1,1);
+			z-index: -1;
+		}
+	}
+	.popup {
+		max-width: 708px;
+		display: inline-block;
+		vertical-align: top;
+		width: 100%;
+		position: relative;
+		overflow: hidden;
+		opacity: 0;
+		transition: opacity 0.3s ease-in-out 0.5s;
+	}
+	.close {
+		@include x-rem(width, 29px);
+		@include x-rem(height, 29px);
+		position: absolute;
+		top: 20%;
+		right: 20%;		
+		@include r(735) {
+			top: 5%;
+			right: 5%;
+		}
+		i {
+			width: 100%;
+			height: 100%;
+			display: block;
+			background-image: url(../img/icons/cross.png);
+			background-size: cover;
+			transition: transform 0.3s ease-in-out;
+		}
+		&:hover {
+			i {
+				transform: rotate(90deg);
+			}
+		}
+	}
+	&.visible {
+		.popup__layer {
+			&::after, &::before {
+				transform: translateY(0);
+			}
+		}
+		.popup {
+			opacity: 1;
+		}
+	}
+	&.summary {
+		.popup {
+			@include x-rem(padding, 104px 148px);
+			@include r(560) {
+				@include x-rem(padding, 50px 70px);
+			}
+			@include r(375) {
+				@include x-rem(padding, 50px 20px);
+			}
+		}
+	}
+	.popup-title {
+		font-family: $Bold;
+		@include x-rem(font-size, 39px);
+		color: $white;
+		text-transform: uppercase;
+		margin-top: 20%;
+		@include x-rem(margin-bottom, 20px);
+	}
+	.btn {
+		background-color: transparent;
+		span {
+			color: $white;
+		}
+		&:hover {
+			background-color: $hover;
+		}
 	}
 }
