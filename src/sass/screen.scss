@@ -1199,7 +1199,7 @@ a {
 	border: 1px solid $blue;
 	@include x-rem(height, 44px);
 	@include x-rem(border-radius, 22px);
-	@include x-rem(line-height, 40px);
+	@include x-rem(line-height, 42px);
 	transition: background-color 0.3s ease-in-out;
 	span {
 		font-family: $Demi;
@@ -1215,6 +1215,9 @@ a {
 		span {
 			color: $white;
 		}
+	}
+	&.vacancy {
+		@include x-rem(margin-top, 60px);
 	}
 }
 .menu-overlay {
@@ -1769,11 +1772,20 @@ a {
 		display: inline-block;
 		vertical-align: top;
 		width: 50%;
+		&:not(:last-child) {
+			padding-right: 5%;
+		}
 		@include r(735) {
 			width: 100%;
+			&:not(:last-child) {
+				padding-right: 0;
+			}
 		}
 		p {
-			margin-bottom: 0;
+			@include x-rem(margin-bottom, 20px);
+			&:last-of-type {
+				margin-bottom: 0;
+			}
 		}
 	}
 	.title {
