@@ -2506,7 +2506,33 @@ a {
 			background-color: $hover;
 			position: absolute;
 			left: 0;
-			@include x-rem(top, 12px);
+			@include x-rem(top, 10px);
+		}
+		a {
+			font-family: $Demi;
+			@include x-rem(font-size, 19px);
+			@include x-rem(line-height, 19px);
+			color: $grey;
+			transition: color 0.3s ease-in-out;
+			.icon {
+				@include x-rem(width, 27px);
+				@include x-rem(height, 15px);
+				position: relative;
+				@include x-rem(top, -3px);
+				display: inline-block;
+				vertical-align: middle;
+				background-image: url(../img/icons/arrow.png);
+				background-size: cover;
+				opacity: 0;
+				transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+			}
+			&:hover {
+				color: $hover;
+				.icon {
+					transform: translateX(40%);
+					opacity: 1;
+				}
+			}
 		}
 	}
 }
