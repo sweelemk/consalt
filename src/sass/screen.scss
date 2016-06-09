@@ -2771,6 +2771,20 @@ a {
 			}
 		}
 	}
+	&.callback {
+		.popup {
+			@include x-rem(padding, 104px 180px);
+			@include r(560) {
+				@include x-rem(padding, 50px 70px);
+			}
+			@include r(375) {
+				@include x-rem(padding, 50px 20px);
+			}
+		}
+		.form {
+			text-align: left;
+		}
+	}
 	.popup-title {
 		font-family: $Bold;
 		@include x-rem(font-size, 39px);
@@ -2787,5 +2801,77 @@ a {
 		&:hover {
 			background-color: $hover;
 		}
+	}
+}
+.contacts {
+	font-size: 0;
+	@include x-rem(margin, 0 0 50px 0);
+	@include r(735) {
+		@include x-rem(margin, 0 0 30px 0);
+	}
+	.cotancts-item {
+		width: 25%;
+		display: inline-block;
+		vertical-align: top;
+		@include x-rem(margin, 0 0 30px 0);
+		&:not(:last-child) {
+			padding-right: 3%;
+		}
+		@include r(1279) {
+			width: 35%;
+		}
+		@include r(1150) {
+			width: 39%;
+		}
+		@include r(980) {
+			width: 25%;
+		}
+		@include r(840) {
+			width: 50%;
+		}
+		@include r(479) {
+			width: 100%;
+		}
+		.contacts-head {
+			font-family: $Demi;
+			@include x-rem(font-size, 19px);
+			color: $grey;
+			@include x-rem(margin, 0 0 10px 0);
+		}
+		.phone {
+			font-family: $Book;
+			@include x-rem(font-size, 19px);
+			color: $grey;
+			@include x-rem(margin, 0 0 3px 0);
+			display: inline-block;
+			width: 100%;
+		}
+		.mail {
+			font-family: $Book;
+			@include x-rem(font-size, 19px);
+			color: $hover;
+			@include x-rem(margin, 0 0 3px 0);
+			display: inline-block;
+			width: 100%;
+		}
+		p {
+			@include x-rem(margin, 0 0 7px 0);
+			&:last-of-type {
+				margin-bottom: 0;
+			}
+		}
+		.btn {
+			span {
+				@include x-rem(padding, 0 30px);
+			}
+		}
+	}
+}
+.map {
+	width: 100%;
+	@include x-rem(height, 330px);
+	@include x-rem(margin, 0 0 80px 0);
+	@include r(735) {
+		@include x-rem(margin, 0 0 30px 0);
 	}
 }
