@@ -8,4 +8,6 @@
 //= lib/jquery.form-validator.min.js
 //= lib/jquery.fancybox.js
 //= lib/jquery.datetimepicker.min.js
+//= lib/multiple-select.js
+//= lib/autosize.min.js
 //= app.js

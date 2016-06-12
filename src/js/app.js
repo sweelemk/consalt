@@ -409,4 +409,54 @@ $(document).ready(function () {
 	if($('.picker').length) {
 		picker();
 	}
+
+	//select
+	function select() {
+		var select = $('.select');
+		select.each(function(){
+			var place = $(this).attr('placeholder');
+			$(this).multipleSelect({
+				single: true,
+				width: '100%',
+				placeholder: place,
+				onClose: function () {
+				$('.ms-choice').removeClass('is-active');
+					if($('.ms-drop').find('li.selected').length) {
+						$('.ms-drop').parents('.field__body').removeClass('has-error');
+						$('.ms-drop').parents('.field__body').addClass('has-success');
+					}else {
+						$('.ms-drop').parents('.field__body').addClass('has-error').removeClass('has-success');
+					}
+				}
+			});
+		});
+	} select();
+
+	function activeSel() {
+		var parent = $('.select'),
+			item = parent.find('> button'),
+			li = parent.find('.ms-drop li');
+		item.on('click', function () {
+			var this_ = $(this),
+				div = this_.find('> div');
+			if (div.hasClass('open')) {
+				$('.ms-choice').removeClass('is-active');
+				div.parents('.ms-choice').addClass('is-active');
+			}
+			else {
+				div.parents('.ms-choice').removeClass('is-active');
+			}
+		});
+		li.on('click', function() {
+			var parent = $(this).parents('.select');
+			parent.find('.ms-choice').removeClass('is-active');
+		});
+
+	}
+	activeSel();
+
+	//autosize
+	// function autoSize() {
+		autosize($('.size'));
+	//} autosize();
 })
