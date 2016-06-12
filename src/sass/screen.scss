@@ -204,6 +204,7 @@ a {
 	.head {
 		margin-top: 20%;
 		position: relative;
+		padding-right: 5%;
 		z-index: 1;
 		@include r(980) {
 			margin: 2% 0;
@@ -1022,6 +1023,18 @@ a {
 		font-family: $Book;
 		@include x-rem(font-size, 19px);
 		color: $lgrey;
+	}
+	&.clients-inner {
+		@include x-rem(margin-bottom, 80px);
+		@include r(735) {
+			@include x-rem(margin-bottom, 50px);
+		}
+		.clients-item {
+			width: 20%;
+			@include r(639) {
+				width: 45%;
+			}
+		}
 	}
 }
 .solutions {
