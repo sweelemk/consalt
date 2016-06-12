@@ -5,5 +5,5 @@
 //= lib/jquery.tooltipster.min.js
 //= lib/dropzone.min.js
 //= lib/html5shiv.min.js
-
+//= lib/jquery.form-validator.min.js
 //= app.js

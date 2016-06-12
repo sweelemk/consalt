@@ -2726,12 +2726,51 @@ a {
 		opacity: 0;
 		transition: opacity 0.3s ease-in-out 0.5s;
 	}
+	.front {
+		position: relative;
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+		&.active {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+	.back {
+		position: absolute;
+		@include x-rem(top, 104px);
+		@include x-rem(left, 165px);
+		@include x-rem(right, 165px);
+		@include r(560) {
+			@include x-rem(top, 50px);
+			@include x-rem(left, 70px);
+			@include x-rem(right, 70px);
+		}
+		@include r(375) {
+			@include x-rem(top, 50px);
+			@include x-rem(left, 20px);
+			@include x-rem(right, 20px);
+		}
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 0.3s ease-in-out 0.3s, visibility 0.3s ease-in-out 0.3s;
+		&.active {
+			opacity: 1;
+			visibility: visible;
+		}
+		p {
+			font-family: $Book;
+			@include x-rem(font-size, 19px);
+			color: $white;
+			@include x-rem(padding, 0 25px);
+		}
+	}
 	.close {
 		@include x-rem(width, 29px);
 		@include x-rem(height, 29px);
 		position: absolute;
-		top: 20%;
-		right: 20%;		
+		@include x-rem(top, 145px);
+		@include x-rem(right, 145px);	
 		@include r(735) {
 			top: 5%;
 			right: 5%;
@@ -2783,6 +2822,11 @@ a {
 		}
 		.form {
 			text-align: left;
+		}
+		.back {
+			.form {
+				text-align: center;
+			}
 		}
 	}
 	.popup-title {
@@ -2874,4 +2918,54 @@ a {
 	@include r(735) {
 		@include x-rem(margin, 0 0 30px 0);
 	}
+}
+.field {
+	.field__body {
+		input {
+			background-color: $white;
+			font-family: $Book;
+			@include x-rem(font-size, 19px);
+			color: $grey;
+			width: 100%;
+			@include x-rem(height, 46px);
+			@include x-rem(padding, 0 20px);
+			&.error {
+				background-color: $bgError;
+				color: $txtError;
+			}
+		}
+		textarea {
+			background-color: $white;
+			font-family: $Book;
+			@include x-rem(font-size, 19px);
+			color: $grey;
+			width: 100%;
+			@include x-rem(height, 93px);
+			@include x-rem(padding, 10px 20px);
+			resize: none;
+			border: none;
+			&.error {
+				background-color: $bgError;
+				color: $txtError;
+			}
+		}
+	}
+}
+.popup__wrap {
+	.field {
+		@include x-rem(margin-bottom, 30px);
+	}
+	.btn {
+		border-color: $white;
+		transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+		span {
+			color: $white;
+		}
+		&:hover {
+			border-color: $hover;
+		}
+	}
+}
+.help-block {
+	display: none!important;
 }

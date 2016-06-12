@@ -155,33 +155,48 @@
 <div class="popup__wrap callback">
 	<div class="popup__layer"></div>
 	<div class="popup">
-		<div class="popup-title">Обратная связь</div>
-		 <div class="form">
-			<form action="">
-				<div class="field">
-					<div class="field__body">
-						<input type="text" placeholder="Имя*">
+		<div class="front active">
+			<div class="popup-title">Обратная связь</div>
+			 <div class="form">
+				<form action="" class="js-validate">
+					<div class="field">
+						<div class="field__body">
+							<input type="text" placeholder="Имя*" data-validation="length" data-validation-length="2-19">
+						</div>
 					</div>
-				</div>
-				<div class="field">
-					<div class="field__body">
-						<input type="text" placeholder="E-mail*">
+					<div class="field">
+						<div class="field__body">
+							<input type="text" placeholder="E-mail*" data-validation="email">
+						</div>
 					</div>
-				</div>
-				<div class="field">
-					<div class="field__body">
-						<input type="text" placeholder="Телефон*">
+					<div class="field">
+						<div class="field__body">
+							<input type="text" placeholder="Телефон*" data-validation="length" data-validation-length="4-19">
+						</div>
 					</div>
-				</div>
-				<div class="field">
-					<div class="field__body">
-						<textarea name="" id="" cols="30" rows="10" placeholder="Сообщение*"></textarea>
+					<div class="field">
+						<div class="field__body">
+							<textarea name="" id="" cols="30" rows="10" placeholder="Сообщение*" data-validation="length" data-validation-length="min2"></textarea>
+						</div>
 					</div>
+					<div class="field">
+						<button class="btn" type="submit"><span>Отправить</span></button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="back">
+			<div class="popup-title">Благодарим вас!</div>
+			<div class="form">
+				<div class="field">
+					<p>Ваше сообщение успешно отправлено! Мы свяжемся с вами в самое ближайшее время!</p>
 				</div>
 				<div class="field">
-					<button class="btn" type="submit"><span>Отправить</span></button>
+					<button class="btn btn__success">
+						<span>Закрыть</span>
+					</button>
 				</div>
-			</form>
+			</div>
 		</div>
 		<button class="close"><i></i></button>
 	</div>

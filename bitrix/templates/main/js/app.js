@@ -255,6 +255,7 @@ $(document).ready(function () {
 			innerSelector = popupSelector.find('.popup'),
 			duration = 500,
 			close = popupSelector.find('.close'),
+			btnSuccess = popupSelector.find('.btn__success'),
 			html = $('html');
 
 		popupSelector
@@ -272,7 +273,7 @@ $(document).ready(function () {
 			event.stopPropagation();
 		});
 
-		close.add(popupSelector).on('click', function(){
+		close.add(popupSelector).add(btnSuccess).on('click', function(){
 			if(!popupSelector.hasClass('visible')) return;
 
 			popupSelector
@@ -321,4 +322,28 @@ $(document).ready(function () {
 		map.setCenter(center); 
 	});
 
+
+	//form validetor
+	function validator() {
+			var form_validate = $('.js-validate');
+		if (form_validate.length) {
+			form_validate.each(function () {
+				var form_this = $(this);
+				$.validate({
+					form : form_this,
+					borderColorOnError : true,
+					scrollToTopOnError : false,
+					onSuccess: function($form){
+						valid($form);
+						return false;
+					}
+				});
+			});
+		};
+	} validator();
+
+	function valid(form) {
+		$(form).parents('.popup__wrap').find('.front').removeClass("active");
+		$(form).parents('.popup__wrap').find('.back').addClass("active");
+	}
 })
