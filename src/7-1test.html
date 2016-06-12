@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+	<title>7-1test</title>
+	//= includes/head.html
+</head>
+<body>
+<section class="viewport">
+	<div class="menu">
+		<button class="menu-btn">
+			<span></span>
+		</button>
+	</div>
+	<div class="viewport-left">
+		<a href="" class="logo"></a>
+		<div class="head">
+			<h1>Пройти тестирование</h1>
+		</div>
+		<div class="nav-inner">
+			<a href="">Вакансии</a>
+			<a href="">Истории успеха</a>
+			<a class="active" href="">Тестируйся</a>
+			<a href="">Студентам</a>
+		</div>
+	</div>
+	<div class="viewport-right">
+		<div class="out">
+			//= includes/header.html
+			<div class="wrapper">
+				<ul class="breadcrumbs">
+					<li><a href="">Главная</a></li>
+					<li><a href="">тестирование</a></li>
+				</ul>
+				<div class="container">
+					<div class="h1">Тестирование уровня ABAP</div>
+					<p class="lead">Заполните необходимые данные перед началом тестирования.</p>
+					<div class="form test">
+						<form action="" class="js-validate">
+							<div class="field__row">
+								<div class="field">
+									<div class="field__title">
+										<span>Фамилия<sup>*</sup></span>
+									</div>
+									<div class="field__body">
+										<input type="text" data-validation="length" data-validation-length="2-19">
+									</div>
+								</div>
+								<div class="field">
+									<div class="field__title">
+										<span>Имя<sup>*</sup></span>
+									</div>
+									<div class="field__body">
+										<input type="text" data-validation="length" data-validation-length="2-19">
+									</div>
+								</div>
+							</div>
+							<div class="field__row">
+								<div class="field">
+									<div class="field__title">
+										<span>Отчество<sup>*</sup></span>
+									</div>
+									<div class="field__body">
+										<input type="text" data-validation="length" data-validation-length="2-19">
+									</div>
+								</div>
+								<div class="field">
+									<div class="field__title">
+										<span>Дата рождения<sup>*</sup></span>
+									</div>
+									<div class="field__body">
+										<input type="text" class="picker">
+									</div>
+								</div>
+							</div>
+							<div class="field__row">
+								<div class="field">
+									<div class="field__title">
+										<span>Контактный номер телефона<sup>*</sup></span>
+									</div>
+									<div class="field__body">
+										<input type="text" data-validation="length" data-validation-length="4-19">
+									</div>
+								</div>
+								<div class="field">
+									<div class="field__title">
+										<span>E-mail<sup>*</sup></span>
+									</div>
+									<div class="field__body">
+										<input type="text" data-validation="email">
+									</div>
+								</div>
+							</div>
+							<div class="field__row">
+								<button class="btn" type="submit">
+									<span>Начать тестирование</span>
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="next__page">
+					<div class="next__page-head">читайте Далее:</div>
+					<a href="">Наши клиенты <i class="icon"></i></a>
+				</div>
+			</div>
+		</div>
+		//= includes/footer.html
+	</div>		
+	//= includes/menu.html
+</section>
+//= includes/summury.html
+</body>
+</html>

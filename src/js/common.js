@@ -7,4 +7,5 @@
 //= lib/html5shiv.min.js
 //= lib/jquery.form-validator.min.js
 //= lib/jquery.fancybox.js
+//= lib/jquery.datetimepicker.min.js
 //= app.js

@@ -3056,6 +3056,48 @@ a {
 		}
 	}
 }
+.test {
+	@include x-rem(max-width, 733px);
+	@include x-rem(margin-bottom, 80px);
+	.field__row {
+		font-size: 0;
+		.field {
+			@include x-rem(margin-bottom, 20px);
+			width: 50%;
+			display: inline-block;
+			text-align: left;
+			&:first-child {
+				@include x-rem(padding-right, 20px);
+			}
+			&:last-child {
+				@include x-rem(padding-left, 20px);
+			}
+			.field__title {
+				@include x-rem(margin-bottom, 5px);
+				span {
+					font-family: $Medium;
+					font-weight: normal;
+					@include x-rem(font-size, 19px);
+					color: $grey;
+					sup {
+						color: $hover;
+						@include x-rem(font-size, 19px);
+						top: 0;
+					}
+				}
+			}
+			.field__body {
+				input, textarea {
+					background-color: $leftBar;
+					&.error {
+						background-color: $bgError;
+						color: $txtError;
+					}
+				}
+			}
+		}
+	}
+}
 .popup__wrap {
 	.field {
 		@include x-rem(margin-bottom, 30px);
@@ -3197,5 +3239,106 @@ a {
 		@include x-rem(width, 24px);
 		@include x-rem(height, 40px);
 		visibility: visible;
+	}
+}
+.xdsoft_datetimepicker {
+	background-color: $grey;
+	.xdsoft_today_button {
+		display: none;
+	}
+	.xdsoft_year {
+		width: 65px;
+	}
+	.xdsoft_prev {
+		background-image: url(../img/icons/left.png);
+		background-position: 0 50%;
+		@include x-rem(width, 18px);
+		@include x-rem(height, 30px);
+		@include x-rem(background-size, 11px 20px);
+		opacity: 1;
+	}
+	.xdsoft_next {
+		background-image: url(../img/icons/right.png);
+		background-position: 0 50%;
+		@include x-rem(width, 18px);
+		@include x-rem(height, 30px);
+		@include x-rem(background-size, 11px 20px);
+		opacity: 1;
+	}
+	.xdsoft_label {
+		background-color: transparent;
+		font-family: $Book;
+		font-size: 18px;
+		color: $white;
+		.xdsoft_select {
+			div {
+				.xdsoft_option  {
+					color: $grey;
+					&.xdsoft_current {
+						background-color: $hover;
+						&:hover {
+							background-color: $hover;
+						}
+					}
+					&:hover {
+						background-color: $scroll;
+						color: $grey;
+					}
+				}
+			}
+		}
+		span {
+			border-bottom: 1px dotted;
+		}
+		&:hover {
+			span {
+				text-decoration: none;
+				border-color: transparent;
+			}
+		}
+		i {
+			background-image: url(../img/icons/right.png);
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: 0 0;
+			width: 7px;
+			height: 12px;
+			transform-origin: 50%;
+			transform: rotate(90deg);
+			opacity: 1;
+			margin-left: 5px;
+		}
+	}
+	.xdsoft_calendar {
+		th, td {
+			background-color: $grey;
+			font-family: $Book;
+			font-size: 16px;
+			color: $white;
+			border: none;
+			&.xdsoft_current {
+				background-color: transparent;
+				box-shadow: none;
+				div {
+					border-radius: 100%;
+					background-color: $hover;
+					padding-right:0;
+					padding-top: 5px;
+					padding-bottom: 5px;
+				}
+			}
+			& > div {
+				padding-right: 0;
+				text-align: center;
+			}
+			&:hover {
+				background-color: transparent!important;
+			}
+			&.xdsoft_disabled {
+				color: $darkGrey;
+				opacity: 1;
+
+			}
+		}
 	}
 }

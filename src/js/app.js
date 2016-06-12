@@ -311,7 +311,7 @@ $(document).ready(function () {
 			position: myLatLng,
 			map: map,
 			icon: image,
-			title:"аГ. ааОбаКаВаА, баЛ. аЁаВаОаБаОаДб, 103, ббб. 8"
+			title:""
 		});
 	}
 	google.maps.event.addDomListener(window, 'load', initialize);
@@ -333,6 +333,9 @@ $(document).ready(function () {
 					form : form_this,
 					borderColorOnError : true,
 					scrollToTopOnError : false,
+					onValid: function($form){
+						validPick($form);
+					},
 					onSuccess: function($form){
 						valid($form);
 						return false;
@@ -342,9 +345,23 @@ $(document).ready(function () {
 		};
 	} validator();
 
+	function validPick(form){
+		var pick = $(form);
+		alert(pick)
+		pick.each(function(){
+			var val = $(this).val();
+			if(val === ''){
+				$(this).addClass('error').parent().addClass('has-error');
+			} else {
+				$(this).removeClass('error').addClass('success');
+				$(this).parent().removeClass('has-error').addClass('has-success');
+			}
+		});
+	};
+
 	function valid(form) {
 		$(form).parents('.popup__wrap').find('.front').removeClass("active");
-		$(form).parents('.popup__wrap').find('.back').addClass("active");
+		$(form).parents('.popup__wrap').find('.back').addClass("active");			
 	}
 
 	//fancy
@@ -356,5 +373,40 @@ $(document).ready(function () {
 	};
 	if($('.popup__img').length){
 		fancy($('.popup__img'));
+	}
+
+	//datepicker
+	function picker() {
+		jQuery.datetimepicker.setLocale('ru');
+		$('.picker').datetimepicker({
+			i18n:{
+				ru:{
+					months:[
+					'Январь','Февраль','Март','Апрель',
+					'Май','Июнь','Июль','Август',
+					'Сентябрь','Октябрь','Ноябрь','Декабрь',
+					],
+					dayOfWeek:[
+					"Пн.", "Вт.", "Ср.", "Чт.", 
+					"Пт.", "Сб.", "Вс.",
+					]
+				},
+			},
+			timepicker:false,
+			dayOfWeekStart: 1,
+			format:'d.m.Y',
+			onClose: function(current_time,$input){
+				if($input.val() === '') {
+					$input.addClass('error');
+					$input.parent().addClass('has-error');
+				} else {
+					$input.removeClass('error').addClass('success');
+					$input.parent().removeClass('has-error').addClass('has-success');
+				}
+			}
+		})
+	}
+	if($('.picker').length) {
+		picker();
 	}
 })
