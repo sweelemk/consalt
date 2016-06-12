@@ -346,4 +346,15 @@ $(document).ready(function () {
 		$(form).parents('.popup__wrap').find('.front').removeClass("active");
 		$(form).parents('.popup__wrap').find('.back').addClass("active");
 	}
+
+	//fancy
+	function fancy(el){
+		el.fancybox({
+			padding: 0,
+			margin: [60,20,60,20]
+		})
+	};
+	if($('.popup__img').length){
+		fancy($('.popup__img'));
+	}
 })

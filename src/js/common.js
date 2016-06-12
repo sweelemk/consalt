@@ -6,4 +6,5 @@
 //= lib/dropzone.min.js
 //= lib/html5shiv.min.js
 //= lib/jquery.form-validator.min.js
+//= lib/jquery.fancybox.js
 //= app.js

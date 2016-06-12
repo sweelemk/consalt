@@ -3074,3 +3074,128 @@ a {
 .help-block {
 	display: none!important;
 }
+.review__container {
+	font-size: 0;
+	.review-item {
+		display: inline-block;
+		vertical-align: top;
+		width: 50%;		
+		@include x-rem(margin-bottom, 110px);
+		&:nth-child(even) {
+			padding-left: 5%;
+			&::before {
+				@include x-rem(left, -22px);
+				@include r(1365) {
+					@include x-rem(left, 6px);
+				}
+				@include r(735) {
+					@include x-rem(top, -87px);
+					@include x-rem(left, -30px)
+				}
+				@include r(480) {
+					@include x-rem(top, -55px);
+					@include x-rem(left, -20px);
+				}
+			}
+		}
+		&:nth-child(odd) {
+			padding-right: 5%;
+		}
+		@include r(735) {
+			width: 100%;
+			@include x-rem(margin-bottom, 50px);
+			&:nth-child(even) {
+				padding-left: 0;
+				padding-right: 5%;
+			}
+		}
+		position: relative;
+		&::before {
+			content: '“';
+			font-family: $Gautami;
+			@include x-rem(font-size, 300px);
+			position: absolute;
+			@include x-rem(top, -150px);
+			@include x-rem(left, -65px);
+			color: #e6f0f8;
+			z-index: -1;
+			@include r(1365) {
+				@include x-rem(font-size, 200px);
+				@include x-rem(top, -93px);
+				@include x-rem(left, -37px);
+			}
+			@include r(980) {
+				z-index: 0;
+			}
+			@include r(735) {
+				@include x-rem(font-size, 180px);
+				@include x-rem(top, -87px);
+				@include x-rem(left, -30px);
+			}
+			@include r(480) {
+				@include x-rem(font-size, 130px);
+				@include x-rem(top, -55px);
+				@include x-rem(left, -20px);
+			}
+		}
+	}
+	.review__text {
+		font-family: $Book;
+		font-style: italic;
+		@include x-rem(font-size, 19px);
+		color: $grey;
+		@include x-rem(margin-bottom, 20px);
+		position: relative;
+	}
+	.review__author {
+		.popup__img {
+			width: 15%;
+			float: left;
+			@include x-rem(margin-right, 20px);
+			img {
+				max-width: 100%;
+			}
+		}
+		.name {
+			font-family: $Medium;
+			font-weight: normal;
+			@include x-rem(font-size, 19px);
+			color: $grey;
+		}
+		p {
+			margin-bottom: 0;
+		}
+	}
+}
+.fancybox-close {
+	@include x-rem(width, 30px);
+	@include x-rem(height, 30px);
+	background-image: url(../img//icons/cross.png);
+	background-size: cover;
+	@include x-rem(right, -55px);
+	@include x-rem(top, -35px);
+}
+.fancybox-nav {
+	width: 20%;
+	&.fancybox-prev {
+		left: -20%;
+		span {
+			background-size: cover;
+			background-image: url(../img/icons/left.png);
+			background-position: 0 0;
+		}
+	}
+	&.fancybox-next {
+		right: -20%;
+		span {
+			background-size: cover;
+			background-image: url(../img/icons/right.png);
+			background-position: 0 0;
+		}
+	}
+	span {
+		@include x-rem(width, 24px);
+		@include x-rem(height, 40px);
+		visibility: visible;
+	}
+}
