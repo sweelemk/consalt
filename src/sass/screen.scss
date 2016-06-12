@@ -1264,6 +1264,9 @@ a {
 	&.vacancy {
 		@include x-rem(margin-top, 60px);
 	}
+	&.m_page {
+		@include x-rem(margin-bottom, 80px);
+	}
 }
 .menu-overlay {
 	position: fixed;
@@ -1516,7 +1519,7 @@ a {
 		@include x-rem(font-size, 19px);
 		color: $grey;
 		line-height: 1.45;
-		@include x-rem(margin-bottom, 65px);
+		@include x-rem(margin-bottom, 45px);
 		@include r(735) {
 			@include x-rem(margin-bottom, 30px);
 		}
