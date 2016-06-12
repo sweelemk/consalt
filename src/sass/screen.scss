@@ -936,6 +936,38 @@ a {
 		}
 	}
 }
+.business-row {
+	&:not(:last-of-type) {
+		@include x-rem(margin-bottom, 120px);
+	}
+	@include r(735) {
+		&:not(:last-of-type) {
+			@include x-rem(margin-bottom, 30px);
+		}
+	}
+	& > .head {
+		@include x-rem(margin-bottom, 80px);
+		@include r(735) {
+			@include x-rem(margin-bottom, 50px);
+		}
+		background-color: $scroll;
+		@include x-rem(padding, 40px);
+		.double {
+			margin-bottom: 0;
+			.business-item {
+				&:hover {
+					.head {
+						color: $grey;
+						&::after {
+							opacity: 0;
+							transform: none;
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .clients {
 	margin: 4% 0 1%;
 	@include r(1365) {
@@ -1779,6 +1811,27 @@ a {
 			p {
 				@include x-rem(margin-bottom, 20px);
 			}
+			.btn {
+				@include x-rem(margin-top, 20px);
+			}
+		}
+	}
+	&.double-row {
+		.double__item {
+			width: 100%;
+			&:not(:last-child) {
+				@include x-rem(margin-bottom, 15px);
+			}
+		}
+	}
+	&.double-icon {
+		.double__item {
+			@include r(735) {
+				@include x-rem(margin-bottom, 30px);
+			}
+			.title {
+				margin-bottom: 0;
+			}
 		}
 	}
 	.double__item {
@@ -1786,7 +1839,7 @@ a {
 		vertical-align: top;
 		width: 50%;
 		&:not(:last-child) {
-			padding-right: 5%;
+			padding-right: 9%;
 		}
 		@include r(735) {
 			width: 100%;
@@ -1800,6 +1853,31 @@ a {
 				margin-bottom: 0;
 			}
 		}
+		.row__list {
+			p {
+				margin-bottom: 0;
+				strong {
+					font-family: $Demi;
+					font-weight: normal;
+				}
+			}
+		}
+		.double__item-inner {
+			@include x-rem(padding-left, 40px);
+			@include x-rem(margin-top, 60px);
+			@include r(735) {
+				@include x-rem(margin-top, 20px);
+				.point {
+					padding-left: 0;
+				}
+			}
+		}
+		& > img {
+			max-width: 80%;
+			@include r(735) {
+				@include x-rem(margin-bottom, 30px);
+			}
+		}
 	}
 	.title {
 		font-family: $Light;
@@ -1809,6 +1887,13 @@ a {
 		@include x-rem(line-height, 36px);
 		@include r(735) {
 			@include x-rem(margin, 0 0 40px 0);
+		}
+		.title__img {
+			@include x-rem(width, 60px);
+			@include x-rem(margin-bottom, 5px);
+			img {
+				max-width: 100%;
+			}
 		}
 	}
 	.clients {
@@ -1853,6 +1938,11 @@ a {
 			width: 30%;
 			@include r(479) {
 				width: 45%;
+			}
+		}
+		&.business-single {
+			.business-item {
+				width: 50%;
 			}
 		}
 	}
@@ -2590,20 +2680,22 @@ a {
 	}
 }
 .point {
+	@include r(735) {
+		@include x-rem(padding-left, 35px);
+	}
 	li {
 		position: relative;
 		font-family: $Book;
 		@include x-rem(font-size, 19px);
 		color: $grey;
 		@include x-rem(margin-bottom, 12px);
-		@include x-rem(padding-left, 20px);
 		&::after {
 			content: '';
 			@include x-rem(width, 6px);
 			@include x-rem(height, 6px);
 			background-color: $hover;
 			position: absolute;
-			left: 0;
+			@include x-rem(left, -35px);
 			@include x-rem(top, 10px);
 		}
 		a {
