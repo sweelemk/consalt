@@ -1469,7 +1469,7 @@ a {
 	}
 }
 .wrapper {
-	@include x-rem(padding-top, 72px);
+	@include x-rem(padding-top, 40px);
 	padding-left: 9.82%;
 	padding-right: 11.82%;
 	@include r(1365) {
@@ -1483,7 +1483,7 @@ a {
 }
 .breadcrumbs {
 	font-size: 0;
-	margin-bottom: 4%;
+	margin-bottom: 3.2%;
 	li {
 		display: inline;
 		position: relative;
@@ -2488,7 +2488,7 @@ a {
 	@include x-rem(font-size, 40px);
 	color: $grey;
 	font-weight: 100;
-	@include x-rem(margin, 0 0 40px 0);
+	@include x-rem(margin, 0 0 30px 0);
 }
 .container {
 	&.news__inner, &.solution, &.sector {
@@ -3360,6 +3360,102 @@ a {
 				color: $darkGrey;
 				opacity: 1;
 
+			}
+		}
+	}
+}
+.question__pagin {
+	display: inline-block;
+	font-size: 0;
+	@include x-rem(margin-bottom, 15px);
+	.question__curren {
+		font-family: $Demi;
+		font-weight: normal;
+		color: $hover;
+		@include x-rem(font-size, 36px);
+		display: inline-block;
+		vertical-align: top;
+	}
+	.question__all {
+		font-family: $Demi;
+		font-weight: normal;
+		color: $grey;
+		@include x-rem(font-size, 18px);
+		display: inline-block;
+		vertical-align: top;
+	}
+}
+.questions {
+	font-family: $Light;
+	font-weight: 100;
+	color: $hover;
+	@include x-rem(font-size, 36px);
+	@include x-rem(margin-bottom, 36px);
+}
+.answer__area {
+	font-size: 0;
+	max-width: 90%;
+	@include x-rem(margin-bottom, 30px);
+	.answer-item {
+		display: inline-block;
+		width: 50%;
+		vertical-align: top;
+		position: relative;
+		@include r(640) {
+			width: 100%;
+		}
+		@include x-rem(margin-bottom, 10px);
+		input {
+			position: absolute;
+			opacity: 0;
+			visibility: hidden;
+			&:checked {
+				& + label {
+					background-color: $scroll;
+					&::before {
+						opacity: 1;
+						visibility: visible;
+						transform: scale(1);
+					}
+				}
+			}
+		}
+		label {
+			@include x-rem(padding, 5px 10px 5px 40px);
+			border-radius: 17px;
+			display: inline-block;
+			position: relative;
+			cursor: pointer;
+			transition: background-color 0.3s ease-in-out;
+			&::after {
+				content: '';
+				@include x-rem(width, 18px);
+				@include x-rem(height, 18px);
+				border-radius: 100%;
+				border: 1px solid $hover;
+				position: absolute;
+				@include x-rem(left, 5px);
+				@include x-rem(top, 5px);
+			}
+			&::before {
+				content: '';
+				@include x-rem(width, 10px);
+				@include x-rem(height, 10px);
+				border-radius: 100%;
+				background-color: $hover;
+				position: absolute;
+				@include x-rem(left, 9px);
+				@include x-rem(top, 9px);
+				opacity: 0;
+				visibility: hidden;
+				transform: scale(0.5);
+				transition: all 0.3s ease-in-out;
+			}
+			span {
+				font-family: $Book;
+				@include x-rem(font-size, 19px);
+				@include x-rem(line-height, 19px);
+				color: $grey;
 			}
 		}
 	}
