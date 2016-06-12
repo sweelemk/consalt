@@ -3066,11 +3066,20 @@ a {
 			width: 50%;
 			display: inline-block;
 			text-align: left;
+			@include r(560) {
+				width: 100%;
+			}
 			&:first-child {
 				@include x-rem(padding-right, 20px);
+				@include r(560) {
+					padding-right: 0;
+				}
 			}
 			&:last-child {
 				@include x-rem(padding-left, 20px);
+				@include r(560) {
+					padding-left: 0;
+				}
 			}
 			.field__title {
 				@include x-rem(margin-bottom, 5px);
@@ -3092,6 +3101,19 @@ a {
 					&.error {
 						background-color: $bgError;
 						color: $txtError;
+					}
+				}
+				position: relative;
+				&.datePicker {
+					&::after {
+						@include x-rem(width, 19px);
+						@include x-rem(height, 19px);
+						content: '';
+						position: absolute;
+						@include x-rem(right, 15px);
+						@include x-rem(top, 12px);
+						background-image: url(../img//icons/picker.png);
+						background-size: cover;
 					}
 				}
 			}

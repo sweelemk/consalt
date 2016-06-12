@@ -209,6 +209,17 @@ $logo-total-width: 504px;
 $logo-total-height: 454px;
 $logo-image: 'sprite.png';
 $logo: (0px, 0px, 0px, 0px, 358px, 94px, 504px, 454px, 'sprite.png', 'logo', );
+$picker-name: 'picker';
+$picker-x: 89px;
+$picker-y: 394px;
+$picker-offset-x: -89px;
+$picker-offset-y: -394px;
+$picker-width: 38px;
+$picker-height: 38px;
+$picker-total-width: 504px;
+$picker-total-height: 454px;
+$picker-image: 'sprite.png';
+$picker: (89px, 394px, -89px, -394px, 38px, 38px, 504px, 454px, 'sprite.png', 'picker', );
 $right-name: 'right';
 $right-x: 358px;
 $right-y: 200px;
@@ -256,7 +267,7 @@ $swiper-prev: (178px, 334px, -178px, -334px, 54px, 30px, 504px, 454px, 'sprite.p
 $spritesheet-width: 504px;
 $spritesheet-height: 454px;
 $spritesheet-image: 'sprite.png';
-$spritesheet-sprites: ($arrow, $baloon, $clip, $cross, $crystal, $docs, $func, $icon-1, $icon-2, $icon-3, $icon-4, $icon-5, $icon-6, $icon-7, $icon-8, $icon-9, $left, $logo, $right, $scroll, $swiper-next, $swiper-prev, );
+$spritesheet-sprites: ($arrow, $baloon, $clip, $cross, $crystal, $docs, $func, $icon-1, $icon-2, $icon-3, $icon-4, $icon-5, $icon-6, $icon-7, $icon-8, $icon-9, $left, $logo, $picker, $right, $scroll, $swiper-next, $swiper-prev, );
 $spritesheet: (504px, 454px, 'sprite.png', $spritesheet-sprites, );
 
 /*
