@@ -2637,216 +2637,214 @@ e.each(n.highlightedPeriods,function(a,n){var i,s,d,u,l,f,c;if(e.isArray(n))i=n[
 */
 !function(e,t){if("function"==typeof define&&define.amd)define(["exports","module"],t);else if("undefined"!=typeof exports&&"undefined"!=typeof module)t(exports,module);else{var n={exports:{}};t(n.exports,n),e.autosize=n.exports}}(this,function(e,t){"use strict";function n(e){function t(){var t=window.getComputedStyle(e,null);p=t.overflowY,"vertical"===t.resize?e.style.resize="none":"both"===t.resize&&(e.style.resize="horizontal"),c="content-box"===t.boxSizing?-(parseFloat(t.paddingTop)+parseFloat(t.paddingBottom)):parseFloat(t.borderTopWidth)+parseFloat(t.borderBottomWidth),isNaN(c)&&(c=0),i()}function n(t){var n=e.style.width;e.style.width="0px",e.offsetWidth,e.style.width=n,p=t,f&&(e.style.overflowY=t),o()}function o(){var t=window.pageYOffset,n=document.body.scrollTop,o=e.style.height;e.style.height="auto";var i=e.scrollHeight+c;return 0===e.scrollHeight?void(e.style.height=o):(e.style.height=i+"px",v=e.clientWidth,document.documentElement.scrollTop=t,void(document.body.scrollTop=n))}function i(){var t=e.style.height;o();var i=window.getComputedStyle(e,null);if(i.height!==e.style.height?"visible"!==p&&n("visible"):"hidden"!==p&&n("hidden"),t!==e.style.height){var r=d("autosize:resized");e.dispatchEvent(r)}}var s=void 0===arguments[1]?{}:arguments[1],a=s.setOverflowX,l=void 0===a?!0:a,u=s.setOverflowY,f=void 0===u?!0:u;if(e&&e.nodeName&&"TEXTAREA"===e.nodeName&&!r.has(e)){var c=null,p=null,v=e.clientWidth,h=function(){e.clientWidth!==v&&i()},y=function(t){window.removeEventListener("resize",h,!1),e.removeEventListener("input",i,!1),e.removeEventListener("keyup",i,!1),e.removeEventListener("autosize:destroy",y,!1),e.removeEventListener("autosize:update",i,!1),r["delete"](e),Object.keys(t).forEach(function(n){e.style[n]=t[n]})}.bind(e,{height:e.style.height,resize:e.style.resize,overflowY:e.style.overflowY,overflowX:e.style.overflowX,wordWrap:e.style.wordWrap});e.addEventListener("autosize:destroy",y,!1),"onpropertychange"in e&&"oninput"in e&&e.addEventListener("keyup",i,!1),window.addEventListener("resize",h,!1),e.addEventListener("input",i,!1),e.addEventListener("autosize:update",i,!1),r.add(e),l&&(e.style.overflowX="hidden",e.style.wordWrap="break-word"),t()}}function o(e){if(e&&e.nodeName&&"TEXTAREA"===e.nodeName){var t=d("autosize:destroy");e.dispatchEvent(t)}}function i(e){if(e&&e.nodeName&&"TEXTAREA"===e.nodeName){var t=d("autosize:update");e.dispatchEvent(t)}}var r="function"==typeof Set?new Set:function(){var e=[];return{has:function(t){return Boolean(e.indexOf(t)>-1)},add:function(t){e.push(t)},"delete":function(t){e.splice(e.indexOf(t),1)}}}(),d=function(e){return new Event(e)};try{new Event("test")}catch(s){d=function(e){var t=document.createEvent("Event");return t.initEvent(e,!0,!1),t}}var a=null;"undefined"==typeof window||"function"!=typeof window.getComputedStyle?(a=function(e){return e},a.destroy=function(e){return e},a.update=function(e){return e}):(a=function(e,t){return e&&Array.prototype.forEach.call(e.length?e:[e],function(e){return n(e,t)}),e},a.destroy=function(e){return e&&Array.prototype.forEach.call(e.length?e:[e],o),e},a.update=function(e){return e&&Array.prototype.forEach.call(e.length?e:[e],i),e}),t.exports=a});
 $(document).ready(function(){
-  (function() {
-    var App,
-      bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+  if($('#experience').length){
+    (function() {
+      var App,
+        bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
-    window.App = (function() {
-      App.prototype.canvasGL = null;
+      window.App = (function() {
+        App.prototype.canvasGL = null;
 
-      App.prototype.container = null;
+        App.prototype.container = null;
 
-      App.prototype.scene = null;
+        App.prototype.scene = null;
 
-      App.prototype.camera = null;
+        App.prototype.camera = null;
 
-      App.prototype.renderer = null;
+        App.prototype.renderer = null;
 
-      App.prototype.geometry = null;
+        App.prototype.geometry = null;
 
-      App.prototype.material = null;
+        App.prototype.material = null;
 
-      App.prototype.mesh = null;
+        App.prototype.mesh = null;
 
-      App.prototype.gui = null;
+        App.prototype.gui = null;
 
-      App.prototype.terrain = null;
+        App.prototype.terrain = null;
 
-      App.prototype.composer = null;
+        App.prototype.composer = null;
 
-      App.prototype.render_pass = null;
+        App.prototype.render_pass = null;
 
-      App.prototype.fxaa_pass = null;
+        App.prototype.fxaa_pass = null;
 
-      App.prototype.posteffect = false;
+        App.prototype.posteffect = false;
 
-      App.prototype.meteo = null;
+        App.prototype.meteo = null;
 
-      App.prototype.skybox = null;
+        App.prototype.skybox = null;
 
-      function App() {
-        this.resize = bind(this.resize, this);
-        this.renderScene = bind(this.renderScene, this);
-        this.update = bind(this.update, this);
-        this.init = bind(this.init, this);
-      }
+        function App() {
+          this.resize = bind(this.resize, this);
+          this.renderScene = bind(this.renderScene, this);
+          this.update = bind(this.update, this);
+          this.init = bind(this.init, this);
+        }
 
-      App.prototype.init = function() {
-        this.scene = new THREE.Scene();
-        this.color = new THREE.Color({
-          background : "#ffffff"
-        });
-        this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100000);
-        console.log(this.camera);
-        this.camera.position.z = 7;
-        this.camera.position.y = 1;
-        this.renderer = new THREE.WebGLRenderer({
-          width: window.innerWidth,
-          height: window.innerHeight,
-          scale: 1,
-          antialias: false,
-          alpha: true
-        });
-        this.renderer.setSize(window.innerWidth, window.innerHeight);
-        this.container = document.createElement('div');
-        this.container.id = 'canvasGL';
-        this.container.appendChild(this.renderer.domElement);
-        this.camera.lookAt(new THREE.Vector3());
-        document.getElementById('experience').appendChild(this.container);
-        this.terrain = new Terrain(this.scene);
-        this.scene.add(this.terrain.plane_mesh);
-        return this.update();
-      };
-
-      App.prototype.update = function() {
-        requestAnimationFrame(this.update);
-        this.terrain.update();
-        return this.renderScene();
-      };
-
-      App.prototype.renderScene = function() {
-        return this.renderer.render(this.scene, this.camera);
-      };
-
-      App.prototype.resize = function(stageWidth, stageHeight) {
-        this.camera.aspect = stageWidth / stageHeight;
-        this.camera.updateProjectionMatrix();
-        return this.renderer.setSize(stageWidth, stageHeight);
-      };
-
-      return App;
-
-    })();
-
-    window.Terrain = (function() {
-      Terrain.prototype.uniforms = null;
-
-      Terrain.prototype.plane_mesh = null;
-
-      Terrain.prototype.plane_geometry = null;
-
-      Terrain.prototype.groundMaterial = null;
-
-      Terrain.prototype.clock = new THREE.Clock(true);
-
-      Terrain.prototype.options = {
-        elevation: 1,
-        noise_range: 2.14,
-        sombrero_amplitude: 0.6,
-        sombrero_frequency: 10.0,
-        speed: 0.8,
-        segments: 324,
-        wireframe_color: '#0f6cb6',
-        perlin_passes: 0,
-        wireframe: true,
-        floor_visible: true
-      };
-
-      Terrain.prototype.scene = null;
-
-      function Terrain(scene) {
-        this.update = bind(this.update, this);
-        this.buildPlanes = bind(this.buildPlanes, this);
-        this.initGUI = bind(this.initGUI, this);
-        this.init = bind(this.init, this);
-        this.scene = scene;
-        this.init();
-      }
-
-      Terrain.prototype.init = function() {
-        this.uniforms = {
-          time: {
-            type: "f",
-            value: 0.0
-          },
-          speed: {
-            type: "f",
-            value: this.options.speed
-          },
-          elevation: {
-            type: "f",
-            value: this.options.elevation
-          },
-          noise_range: {
-            type: "f",
-            value: this.options.noise_range
-          },
-          offset: {
-            type: "f",
-            value: this.options.elevation
-          },
-          perlin_passes: {
-            type: "f",
-            value: this.options.perlin_passes
-          },
-          sombrero_amplitude: {
-            type: "f",
-            value: this.options.sombrero_amplitude
-          },
-          sombrero_frequency: {
-            type: "f",
-            value: this.options.sombrero_frequency
-          },
-          line_color: {
-            type: "c",
-            value: new THREE.Color(this.options.wireframe_color)
-          }
+        App.prototype.init = function() {
+          this.scene = new THREE.Scene();
+          this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100000);
+          this.camera.position.z = 7;
+          this.camera.position.y = 1;
+          this.renderer = new THREE.WebGLRenderer({
+            width: window.innerWidth,
+            height: window.innerHeight,
+            scale: 1,
+            antialias: false,
+            alpha: true
+          });
+          this.renderer.setSize(window.innerWidth, window.innerHeight);
+          this.container = document.createElement('div');
+          this.container.id = 'canvasGL';
+          this.container.appendChild(this.renderer.domElement);
+          this.camera.lookAt(new THREE.Vector3());
+          document.getElementById('experience').appendChild(this.container);
+          this.terrain = new Terrain(this.scene);
+          this.scene.add(this.terrain.plane_mesh);
+          return this.update();
         };
-        this.buildPlanes(this.options.segments);
-        return this.initGUI();
-      };
 
-      Terrain.prototype.initGUI = function() {
-        this.gui = new dat.GUI();
-        this.gui.values = {};
-        this.groundMaterial.visible = false;
-      };
+        App.prototype.update = function() {
+          requestAnimationFrame(this.update);
+          this.terrain.update();
+          return this.renderScene();
+        };
 
-      Terrain.prototype.buildPlanes = function(segments) {
-        this.plane_geometry = new THREE.PlaneBufferGeometry(20, 20, segments, segments);
-        this.plane_material = new THREE.ShaderMaterial({
-          vertexShader: document.getElementById('shader-vertex-terrain-perlinsombrero').textContent,
-          fragmentShader: document.getElementById('shader-fragment-terrain').textContent,
-          wireframe: this.options.wireframe,
-          wireframeLinewidth: 0,
-          transparent: true,
-          uniforms: this.uniforms
-        });
-        this.groundMaterial = new THREE.MeshPhongMaterial({
-          ambient: 0xffffff,
-          color: 0xffffff,
-          specular: 0xffffff
-        });
-        this.groundMaterial.color.setHSL(0, 0, 100);
-        this.materials = [this.groundMaterial, this.plane_material];
-        this.plane_mesh = THREE.SceneUtils.createMultiMaterialObject(this.plane_geometry, this.materials);
-        this.plane_mesh.rotation.x = -Math.PI / 2;
-        return this.plane_mesh.position.y = -0.5;
-      };
+        App.prototype.renderScene = function() {
+          return this.renderer.render(this.scene, this.camera);
+        };
 
-      Terrain.prototype.update = function() {
-        return this.plane_material.uniforms['time'].value = this.clock.getElapsedTime();
-      };
+        App.prototype.resize = function(stageWidth, stageHeight) {
+          this.camera.aspect = stageWidth / stageHeight;
+          this.camera.updateProjectionMatrix();
+          return this.renderer.setSize(stageWidth, stageHeight);
+        };
 
-      return Terrain;
+        return App;
 
-    })();
+      })();
 
-    App = new window.App();
+      window.Terrain = (function() {
+        Terrain.prototype.uniforms = null;
 
-    App.init();
+        Terrain.prototype.plane_mesh = null;
 
-  }).call(this);
+        Terrain.prototype.plane_geometry = null;
+
+        Terrain.prototype.groundMaterial = null;
+
+        Terrain.prototype.clock = new THREE.Clock(true);
+
+        Terrain.prototype.options = {
+          elevation: 1,
+          noise_range: 2.14,
+          sombrero_amplitude: 0.6,
+          sombrero_frequency: 10.0,
+          speed: 0.8,
+          segments: 324,
+          wireframe_color: '#0f6cb6',
+          perlin_passes: 0,
+          wireframe: true,
+          floor_visible: true
+        };
+
+        Terrain.prototype.scene = null;
+
+        function Terrain(scene) {
+          this.update = bind(this.update, this);
+          this.buildPlanes = bind(this.buildPlanes, this);
+          this.initGUI = bind(this.initGUI, this);
+          this.init = bind(this.init, this);
+          this.scene = scene;
+          this.init();
+        }
+
+        Terrain.prototype.init = function() {
+          this.uniforms = {
+            time: {
+              type: "f",
+              value: 0.0
+            },
+            speed: {
+              type: "f",
+              value: this.options.speed
+            },
+            elevation: {
+              type: "f",
+              value: this.options.elevation
+            },
+            noise_range: {
+              type: "f",
+              value: this.options.noise_range
+            },
+            offset: {
+              type: "f",
+              value: this.options.elevation
+            },
+            perlin_passes: {
+              type: "f",
+              value: this.options.perlin_passes
+            },
+            sombrero_amplitude: {
+              type: "f",
+              value: this.options.sombrero_amplitude
+            },
+            sombrero_frequency: {
+              type: "f",
+              value: this.options.sombrero_frequency
+            },
+            line_color: {
+              type: "c",
+              value: new THREE.Color(this.options.wireframe_color)
+            }
+          };
+          this.buildPlanes(this.options.segments);
+          return this.initGUI();
+        };
+
+        Terrain.prototype.initGUI = function() {
+          this.gui = new dat.GUI();
+          this.gui.values = {};
+          this.groundMaterial.visible = false;
+        };
+
+        Terrain.prototype.buildPlanes = function(segments) {
+          this.plane_geometry = new THREE.PlaneBufferGeometry(20, 20, segments, segments);
+          this.plane_material = new THREE.ShaderMaterial({
+            vertexShader: document.getElementById('shader-vertex-terrain-perlinsombrero').textContent,
+            fragmentShader: document.getElementById('shader-fragment-terrain').textContent,
+            wireframe: this.options.wireframe,
+            wireframeLinewidth: 0,
+            transparent: true,
+            uniforms: this.uniforms
+          });
+          this.groundMaterial = new THREE.MeshPhongMaterial({
+            ambient: 0xffffff,
+            color: 0xffffff,
+            specular: 0xffffff
+          });
+          this.groundMaterial.color.setHSL(0, 0, 100);
+          this.materials = [this.groundMaterial, this.plane_material];
+          this.plane_mesh = THREE.SceneUtils.createMultiMaterialObject(this.plane_geometry, this.materials);
+          this.plane_mesh.rotation.x = -Math.PI / 2;
+          return this.plane_mesh.position.y = -0.5;
+        };
+
+        Terrain.prototype.update = function() {
+          return this.plane_material.uniforms['time'].value = this.clock.getElapsedTime();
+        };
+
+        return Terrain;
+
+      })();
+
+      App = new window.App();
+
+      App.init();
+
+    }).call(this);
+  };
 });
 $(document).ready(function () {
 	
@@ -3138,40 +3136,43 @@ $(document).ready(function () {
 	};
 
 	//google map
-	var map;
-	function initialize() {
-		var mapOptions = {
-			zoom: 14,
-			disableDefaultUI: true,
-			scrollwheel: false,
-			panControl: false,
-			zoomControl: false,
-			zoomControlOptions: {
-			style: google.maps.ZoomControlStyle.SMALL,
-			position: google.maps.ControlPosition.RIGHT_CENTER
-		},
-		scaleControl: true,
-		center: new google.maps.LatLng(55.872686, 37.43495)
-		};
+	function maps(){
+		var map;
+		function initialize() {
+			var mapOptions = {
+				zoom: 14,
+				disableDefaultUI: true,
+				scrollwheel: false,
+				panControl: false,
+				zoomControl: false,
+				zoomControlOptions: {
+				style: google.maps.ZoomControlStyle.SMALL,
+				position: google.maps.ControlPosition.RIGHT_CENTER
+			},
+			scaleControl: true,
+			center: new google.maps.LatLng(55.872686, 37.43495)
+			};
 
-		map = new google.maps.Map(document.getElementById('map'), mapOptions);
-		var image = 'img/icons/baloon.png';
-		var myLatLng = new google.maps.LatLng(55.872686, 37.43495);
-		var beachMarker = new google.maps.Marker({
-			position: myLatLng,
-			map: map,
-			icon: image,
-			title:""
+			map = new google.maps.Map(document.getElementById('map'), mapOptions);
+			var image = 'img/icons/baloon.png';
+			var myLatLng = new google.maps.LatLng(55.872686, 37.43495);
+			var beachMarker = new google.maps.Marker({
+				position: myLatLng,
+				map: map,
+				icon: image,
+				title:""
+			});
+		}
+		google.maps.event.addDomListener(window, 'load', initialize);
+
+		google.maps.event.addDomListener(window, "resize", function() {
+			var center = map.getCenter();
+			google.maps.event.trigger(map, "resize");
+			map.setCenter(center); 
 		});
+	} if($('#map').length) {
+		maps()
 	}
-	google.maps.event.addDomListener(window, 'load', initialize);
-
-	google.maps.event.addDomListener(window, "resize", function() {
-		var center = map.getCenter();
-		google.maps.event.trigger(map, "resize");
-		map.setCenter(center); 
-	});
-
 
 	//form validetor
 	function validator() {

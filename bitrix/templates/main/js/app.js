@@ -288,40 +288,43 @@ $(document).ready(function () {
 	};
 
 	//google map
-	var map;
-	function initialize() {
-		var mapOptions = {
-			zoom: 14,
-			disableDefaultUI: true,
-			scrollwheel: false,
-			panControl: false,
-			zoomControl: false,
-			zoomControlOptions: {
-			style: google.maps.ZoomControlStyle.SMALL,
-			position: google.maps.ControlPosition.RIGHT_CENTER
-		},
-		scaleControl: true,
-		center: new google.maps.LatLng(55.872686, 37.43495)
-		};
+	function maps(){
+		var map;
+		function initialize() {
+			var mapOptions = {
+				zoom: 14,
+				disableDefaultUI: true,
+				scrollwheel: false,
+				panControl: false,
+				zoomControl: false,
+				zoomControlOptions: {
+				style: google.maps.ZoomControlStyle.SMALL,
+				position: google.maps.ControlPosition.RIGHT_CENTER
+			},
+			scaleControl: true,
+			center: new google.maps.LatLng(55.872686, 37.43495)
+			};
 
-		map = new google.maps.Map(document.getElementById('map'), mapOptions);
-		var image = 'img/icons/baloon.png';
-		var myLatLng = new google.maps.LatLng(55.872686, 37.43495);
-		var beachMarker = new google.maps.Marker({
-			position: myLatLng,
-			map: map,
-			icon: image,
-			title:""
+			map = new google.maps.Map(document.getElementById('map'), mapOptions);
+			var image = 'img/icons/baloon.png';
+			var myLatLng = new google.maps.LatLng(55.872686, 37.43495);
+			var beachMarker = new google.maps.Marker({
+				position: myLatLng,
+				map: map,
+				icon: image,
+				title:""
+			});
+		}
+		google.maps.event.addDomListener(window, 'load', initialize);
+
+		google.maps.event.addDomListener(window, "resize", function() {
+			var center = map.getCenter();
+			google.maps.event.trigger(map, "resize");
+			map.setCenter(center); 
 		});
+	} if($('#map').length) {
+		maps()
 	}
-	google.maps.event.addDomListener(window, 'load', initialize);
-
-	google.maps.event.addDomListener(window, "resize", function() {
-		var center = map.getCenter();
-		google.maps.event.trigger(map, "resize");
-		map.setCenter(center); 
-	});
-
 
 	//form validetor
 	function validator() {
