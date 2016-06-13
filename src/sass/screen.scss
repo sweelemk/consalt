@@ -2747,7 +2747,7 @@ a {
 	}
 }
 .popup-btn {
-	display: inline-block;
+	display: block;
 	span {
 		font-family: $Book;
 		@include x-rem(font-size, 19px);
@@ -2779,6 +2779,60 @@ a {
 		span {
 			color: $white;
 			border-bottom: 1px dashed;
+			@include x-rem(max-width, 155px);
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}
+	.dz-details {
+		display: none;
+	}
+	.dz-preview {
+		padding: 0;
+		display: inline;
+		.dz-error-message {
+			left: 50%;
+			transform: translate(-50%);
+			opacity: 1;
+			@include x-rem(top, 80px);
+			padding: 0;
+			span {
+				font-family: $Book;
+				color: $txtError;
+				@include x-rem(font-size, 14px);
+				@include x-rem(padding, 8px 10px);
+			}
+		}
+		a {
+			&.dz-remove {
+				background-image: url(../img/icons/cross.png);
+				@include x-rem(width, 10px);
+				@include x-rem(height, 10px);
+				background-size: cover;
+				@include x-rem(top, 68px);
+				@include x-rem(right, -85px);
+				text-indent: -999999px;
+			}
+		}
+	}
+}
+.form.test {
+	.dropzone {
+		margin-bottom: 0;
+		margin-right: -5%;
+		.drop__title {
+			margin-left: 0;
+			@include x-rem(padding-left, 20px);
+			&::after {
+				background-image: url(../img/icons/clip-test.png);
+				left: 0;
+			}
+			span {
+				color: $hover;
+			}
 		}
 	}
 }

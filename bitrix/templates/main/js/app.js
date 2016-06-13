@@ -195,46 +195,79 @@ $(document).ready(function () {
 
 	//dropzone
 	function dropFile() {
-		var dropfile = $("#mydropzone1");
+		var dropfile = $("#mydropzone1"),
+			dropfile2 = $("#mydropzone2");
 
 		if(dropfile.length) {
-			Dropzone.options.mydropzone = {
-				// init: function() {
-				// 	this.on("addedfile", function(file) { });
-				// 	this.on("success", function(file) {
-				// 	 });
-				// 	this.on("removedfile", function(file) {
-				// 		// $.ajax({
-				// 		// 	type: "POST",
-				// 		// 	url: "/fileupl.php",
-				// 		// 	data: "del="+file['name'],
-				// 		// 	dataType: "html"
-				// 		// });
-				// 	 });
-				// },
-				accept: function(file, done) {
-					var re = /(?:\.([^.]+))?$/;
-					var ext = re.exec(file.name)[1];
-					ext = ext.toUpperCase();
-					if ( ext == "DOC" || ext == "DOCX" || ext == "PDF") {
-						done();
-					}
-					else { 
-						done("Используйте пожалуйста .doc, docx или .pdf.");
-					}
-				},
-				uploadMultiple: false,
-				paramName: "file",
-				maxFilesize: 15,
-				dictDefaultMessage: "",
-				addRemoveLinks: true,
-				dictRemoveFile: '',
-				createImageThumbnails: true,
-				thumbnailWidth: 73,
-				thumbnailHeight: 68,
-				dictInvalidFileType: 'Данный формат файла не поддерживается.',
-				previewTemplate: '<div class="dz-preview dz-file-preview"><div class="dz-details"><img data-dz-thumbnail /></div><div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div><div class="dz-success-mark"><span>✔</span></div><div class="dz-error-mark"><span>✘</span></div><div class="dz-error-message"><span data-dz-errormessage></span></div></div>'
-			}
+			Dropzone.autoDiscover = false;
+			$('#mydropzone1').dropzone(
+				{
+					// url: '../fileupload.php',
+					accept: function(file, done) {
+						var re = /(?:\.([^.]+))?$/;
+						var ext = re.exec(file.name)[1];
+						ext = ext.toUpperCase();
+						if ( ext == "DOC" || ext == "DOCX" || ext == "PDF") {
+							done();
+						}
+						else { 
+							done("Используйте пожалуйста .doc, docx или .pdf.");
+						}
+					},
+					maxFiles:1,
+					init: function() {
+						this.on('addedfile', function(file) {
+							if (this.files.length > 1) {
+								this.removeFile(this.files[0]);
+							}
+							var txt =  dropfile2.find('.dz-filename').find('span').text();
+							dropfile2.find('.drop__title').find('span').html(txt);
+							dropfile2.find('.dz-remove').on("click", function(){
+								dropfile2.find('.drop__title').find('span').html('Прикрепить резюме');
+							});
+						});
+					},
+					uploadMultiple: false,
+					paramName: "file",
+					maxFilesize: 5,
+					dictDefaultMessage: "",
+					addRemoveLinks: true,
+					dictRemoveFile: '',
+					createImageThumbnails: true,
+					thumbnailWidth: 0,
+					thumbnailHeight: 0,
+					previewTemplate: '<div class="dz-preview dz-file-preview"><div class="dz-details"><div class="dz-filename"><span data-dz-name></span></div></div><div class="dz-error-message"><span data-dz-errormessage></span></div></div>'
+				}
+			);
+			$('#mydropzone2').dropzone(
+				{
+					url: '../fileupload.php',
+					maxFiles:1,
+					init: function() {
+						this.on('addedfile', function(file) {
+							if (this.files.length > 1) {
+								this.removeFile(this.files[0]);
+							}
+							var txt =  dropfile2.find('.dz-filename').find('span').text();
+							dropfile2.find('.drop__title').find('span').html(txt);
+							dropfile2.find('.dz-remove').on("click", function(){
+								dropfile2.find('.drop__title').find('span').html('Прикрепить резюме');
+							});
+						});
+					},
+					uploadMultiple: false,
+					acceptedFiles: 'image/*',
+					paramName: "file",
+					maxFilesize: 15,
+					dictDefaultMessage: "",
+					addRemoveLinks: true,
+					dictRemoveFile: '',
+					createImageThumbnails: true,
+					thumbnailWidth: 0,
+					thumbnailHeight: 0,
+					previewTemplate: '<div class="dz-preview dz-file-preview"><div class="dz-details"><div class="dz-filename"><span data-dz-name></span></div></div><div class="dz-error-message"><span data-dz-errormessage></span></div></div>'
+				}
+			);
 		};
 	} dropFile();
 
@@ -291,6 +324,7 @@ $(document).ready(function () {
 	function maps(){
 		var map;
 		function initialize() {
+			var stylez = [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#dde6e8"},{"visibility":"on"}]}];
 			var mapOptions = {
 				zoom: 14,
 				disableDefaultUI: true,
@@ -298,14 +332,17 @@ $(document).ready(function () {
 				panControl: false,
 				zoomControl: false,
 				zoomControlOptions: {
-				style: google.maps.ZoomControlStyle.SMALL,
-				position: google.maps.ControlPosition.RIGHT_CENTER
-			},
-			scaleControl: true,
-			center: new google.maps.LatLng(55.872686, 37.43495)
+					style: google.maps.ZoomControlStyle.SMALL,
+					position: google.maps.ControlPosition.RIGHT_CENTER
+				},
+				scaleControl: true,
+				center: new google.maps.LatLng(55.872686, 37.43495)
 			};
 
 			map = new google.maps.Map(document.getElementById('map'), mapOptions);
+			var mapType = new google.maps.StyledMapType(stylez, { name:"Grayscale" });
+			map.mapTypes.set('tehgrayz', mapType);
+    		map.setMapTypeId('tehgrayz');
 			var image = 'img/icons/baloon.png';
 			var myLatLng = new google.maps.LatLng(55.872686, 37.43495);
 			var beachMarker = new google.maps.Marker({
@@ -323,7 +360,7 @@ $(document).ready(function () {
 			map.setCenter(center); 
 		});
 	} if($('#map').length) {
-		maps()
+		maps();
 	}
 
 	//form validetor

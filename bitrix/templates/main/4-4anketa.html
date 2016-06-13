@@ -579,7 +579,15 @@
 												<span>Фотография для анкеты</span>
 											</div>
 											<div class="field__body">
-												
+												<div id="mydropzone2" class="dropzone">
+													<div class="upload__block">
+														<div class="upload__preview">
+															<div class="upload__text">
+																<div class="drop__title"><span>Прикрепить резюме</span> до 5 Мб</div>
+															</div>
+														</div>
+													</div>
+												</div>
 											</div>
 										</div>
 										<div class="field">
@@ -1212,25 +1220,39 @@
 <div class="popup__wrap summary">
 	<div class="popup__layer"></div>
 	<div class="popup">
-		<div class="popup-title">прикрепить свое&nbsp;резюме</div>
-		 <div class="form">
-			<form action="">
-				<div class="field">
-					<div id="mydropzone1" class="dropzone" action="fileupload.php">
-						<div class="upload__block">
-							<div class="upload__preview">
-								<div class="upload__text">
-									<div class="drop__title"><span>Прикрепить резюме</span> до 5 Мб</div>
-									<img data-dz-thumbnail />
+		<div class="front active">
+			<div class="popup-title">прикрепить свое&nbsp;резюме</div>
+			 <div class="form">
+				<form action="">
+					<div class="field">
+						<div id="mydropzone1" class="dropzone" action="../fileupload.php">
+							<div class="upload__block">
+								<div class="upload__preview">
+									<div class="upload__text">
+										<div class="drop__title"><span>Прикрепить резюме</span> до 5 Мб</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+					<div class="field">
+						<button class="btn" type="submit"><span>Отправить</span></button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="back">
+			<div class="popup-title">Благодарим вас!</div>
+			<div class="form">
+				<div class="field">
+					<p>Ваше резюме успешно отправлено. В случае заинтересованности мы свяжемся с вами.</p>
 				</div>
 				<div class="field">
-					<button class="btn" type="submit"><span>Отправить</span></button>
+					<button class="btn btn__success">
+						<span>Закрыть</span>
+					</button>
 				</div>
-			</form>
+			</div>
 		</div>
 		<button class="close"><i></i></button>
 	</div>

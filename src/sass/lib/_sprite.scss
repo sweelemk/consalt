@@ -24,15 +24,26 @@ $arrow-image: 'sprite.png';
 $arrow: (358px, 281px, -358px, -281px, 54px, 32px, 504px, 454px, 'sprite.png', 'arrow', );
 $baloon-name: 'baloon';
 $baloon-x: 476px;
-$baloon-y: 128px;
+$baloon-y: 176px;
 $baloon-offset-x: -476px;
-$baloon-offset-y: -128px;
+$baloon-offset-y: -176px;
 $baloon-width: 25px;
 $baloon-height: 38px;
 $baloon-total-width: 504px;
 $baloon-total-height: 454px;
 $baloon-image: 'sprite.png';
-$baloon: (476px, 128px, -476px, -128px, 25px, 38px, 504px, 454px, 'sprite.png', 'baloon', );
+$baloon: (476px, 176px, -476px, -176px, 25px, 38px, 504px, 454px, 'sprite.png', 'baloon', );
+$clip-test-name: 'clip-test';
+$clip-test-x: 476px;
+$clip-test-y: 128px;
+$clip-test-offset-x: -476px;
+$clip-test-offset-y: -128px;
+$clip-test-width: 27px;
+$clip-test-height: 48px;
+$clip-test-total-width: 504px;
+$clip-test-total-height: 454px;
+$clip-test-image: 'sprite.png';
+$clip-test: (476px, 128px, -476px, -128px, 27px, 48px, 504px, 454px, 'sprite.png', 'clip-test', );
 $clip-name: 'clip';
 $clip-x: 476px;
 $clip-y: 80px;
@@ -267,7 +278,7 @@ $swiper-prev: (178px, 334px, -178px, -334px, 54px, 30px, 504px, 454px, 'sprite.p
 $spritesheet-width: 504px;
 $spritesheet-height: 454px;
 $spritesheet-image: 'sprite.png';
-$spritesheet-sprites: ($arrow, $baloon, $clip, $cross, $crystal, $docs, $func, $icon-1, $icon-2, $icon-3, $icon-4, $icon-5, $icon-6, $icon-7, $icon-8, $icon-9, $left, $logo, $picker, $right, $scroll, $swiper-next, $swiper-prev, );
+$spritesheet-sprites: ($arrow, $baloon, $clip-test, $clip, $cross, $crystal, $docs, $func, $icon-1, $icon-2, $icon-3, $icon-4, $icon-5, $icon-6, $icon-7, $icon-8, $icon-9, $left, $logo, $picker, $right, $scroll, $swiper-next, $swiper-prev, );
 $spritesheet: (504px, 454px, 'sprite.png', $spritesheet-sprites, );
 
 /*
