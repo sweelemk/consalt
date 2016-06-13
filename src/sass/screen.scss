@@ -36,6 +36,10 @@ body {
 	background-color: $white;
 	min-width: 320px;
 }
+strong {
+	font-family: $Medium;
+	font-weight: normal;
+}
 * {
 	margin: 0;
 	outline: none;
@@ -594,7 +598,7 @@ a {
 	transform: translate(-50%);
 	@include x-rem(width, 73px);
 	@include x-rem(height, 73px);
-	@include x-rem(line-height, 73px);
+	@include x-rem(line-height, 68px);
 	background-color: $scroll;
 	border-radius: 100%;
 	cursor: pointer;
@@ -606,15 +610,27 @@ a {
 		@include x-rem(bottom, 33px);
 	}
 	.icon {
-		@include x-rem(width, 14px);
-		@include x-rem(height, 40px);
+		@include x-rem(width, 18px);
+		@include x-rem(height, 39px);
 		display: inline-block;
 		vertical-align: middle;
 		div {
 			width: 100%;
 			height: 100%;
-			background-image: url(../img/icons/scroll.png);
-			background-size: cover;
+			display: block;
+			path {
+				fill: $grey;
+				transition: fill 0.3s ease-in-out;
+			}
+		}
+	}
+	&:hover {
+		.icon {
+			div {
+				path {
+					fill: $hover;
+				}
+			}
 		}
 	}
 	&.hide {
@@ -3378,8 +3394,8 @@ a {
 		}
 	}
 	.review__text {
-		font-family: $Book;
-		font-style: italic;
+		font-family: $BookOblique;
+		font-weight: 100;
 		@include x-rem(font-size, 19px);
 		color: $grey;
 		@include x-rem(margin-bottom, 20px);

@@ -6,10 +6,14 @@
 @include font-face('FuturaNewHeavy', "../fonts/FuturaNewHeavy" ,null, null, ttf eot woff2 woff svg);
 @include font-face('FuturaNewCondMedium', "../fonts/FuturaNewCondMedium" ,null, null, ttf eot woff2 woff svg);
 @include font-face('FuturaNewLight', "../fonts/FuturaNewLight" ,null, null, ttf eot woff2 woff svg);
+@include font-face('FuturaNewBookOblique', "../fonts/FuturaNewBookOblique" ,null, null, ttf eot woff2 woff svg);
+@include font-face('FuturaNewCondBoldOblique', "../fonts/FuturaNewCondBoldOblique" ,null, null, ttf eot woff2 woff svg);
 @include font-face('gautami', "../fonts/gautami" ,null, null, ttf eot woff2 woff svg);
 
 
 $Book: 'FuturaNewBook', $font-stack-helvetica;
+$BookOblique: 'FuturaNewBookOblique', $font-stack-helvetica;
+$BoldOblique: 'FuturaNewCondBoldOblique', $font-stack-helvetica;
 $Medium: 'FuturaNewMedium', $font-stack-helvetica;
 $Bold: 'FuturaNewBold', $font-stack-helvetica;
 $Demi: 'FuturaNewDemi', $font-stack-helvetica;
