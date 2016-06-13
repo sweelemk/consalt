@@ -482,22 +482,96 @@ a {
 	@include clearfix;
 	margin-left: 15%;
 	.nav-item {
-		font-family: $CondMedium;
-		@include x-rem(font-size, 19.75px);
-		color: $grey;
-		text-transform: uppercase;
-		transition: color 0.3s ease;
 		display: inline-block;
+		position: relative;
 		&:not(:first-child) {
 			//@include x-rem(margin, 0 0 0 30px);
 			margin-left: 9%;
 		}
+		& > a {
+			font-family: $CondMedium;
+			@include x-rem(font-size, 19.75px);
+			color: $grey;
+			text-transform: uppercase;
+			transition: color 0.3s ease;
+			position: relative;
+		}
+		&.drop {
+			& > a {
+				&::after {
+					content: '';
+					height: 2px;
+					left: 0;
+					width: 100%;
+					background-color: $hover;
+					position: absolute;
+					@include x-rem(bottom, -22px);
+					z-index: 5;
+					width: 0;
+					transition: width 0.3s ease-in-out;
+					user-select: none;
+					cursor: default;
+				}
+			}
+		}
 		&:hover {
-			color: $hover;
+			& > a {
+				color: $hover;
+				&::after {
+					width: 100%;
+				}
+				& + .dropdown {
+					opacity: 1;
+					visibility: visible;
+					transform: translate(0,0);
+				}
+			}
 		}
 	}
 	@include r(980) {
 		display: none;
+	}
+	.dropdown {
+		position: absolute;
+		top: 100%;
+		top: 100%;
+		@include x-rem(width, 400px);
+		@include x-rem(left, -65px);
+		@include x-rem(padding, 20px 0 0);
+		display: table;
+		transform: translate(0, 20px);
+		opacity: 0;
+		visibility: hidden;
+		transition: all 0.3s ease-in-out;
+		.dropdown-inner {
+			box-shadow: 0px 20px 30px 0px rgba(159, 178, 196, 0.3);
+			@include x-rem(padding, 10px 0);
+			background-color: $white;
+			display: table-cell;
+		}
+		ul {
+			@include x-rem(padding, 20px 0);
+			li {
+				a {
+					font-family: $Book;
+					@include x-rem(font-size, 19px);
+					color: $grey;
+					transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+					@include x-rem(padding, 15px 65px);
+					display: inline-block;
+					width: 100%;
+					&:hover {
+						color: $hover;
+					}
+				}
+				&.active {
+					a {
+						background-color: $scroll;
+						color: $hover;
+					}
+				}
+			}
+		}
 	}
 }
 .nav-inner {
