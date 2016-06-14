@@ -50,8 +50,8 @@ $(document).ready(function(){
           this.camera.position.z = 7;
           this.camera.position.y = 1;
           this.renderer = new THREE.WebGLRenderer({
-            width: window.innerWidth,
-            height: window.innerHeight,
+            width: window.innerWidth - 300,
+            height: window.innerHeight - 300,
             scale: 1,
             antialias: false,
             alpha: true
@@ -103,7 +103,7 @@ $(document).ready(function(){
           noise_range: 2.14,
           sombrero_amplitude: 0.6,
           sombrero_frequency: 10.0,
-          speed: 0.8,
+          speed: 0.4,
           segments: 324,
           wireframe_color: '#0f6cb6',
           perlin_passes: 0,
