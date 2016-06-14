@@ -639,7 +639,7 @@
 												<span>Фамилия<sup>*</sup></span>
 											</div>
 											<div class="field__body">
-												<input type="text">
+												<input type="text" data-validation="length" data-validation-length="2-19">
 											</div>
 										</div>
 										<div class="field">
@@ -647,7 +647,7 @@
 												<span>Имя<sup>*</sup></span>
 											</div>
 											<div class="field__body">
-												<input type="text">
+												<input type="text" data-validation="length" data-validation-length="2-19">
 											</div>
 										</div>
 										<div class="field">
@@ -655,7 +655,7 @@
 												<span>Отчество<sup>*</sup></span>
 											</div>
 											<div class="field__body">
-												<input type="text">
+												<input type="text" data-validation="length" data-validation-length="2-19">
 											</div>
 										</div>
 									</div>
@@ -683,7 +683,7 @@
 												<span>Контактный номер телефона<sup>*</sup></span>
 											</div>
 											<div class="field__body">
-												<input type="text">
+												<input type="text" data-validation="length" data-validation-length="2-19">
 											</div>
 										</div>
 										<div class="field">
@@ -691,7 +691,7 @@
 												<span>E-mail<sup>*</sup></span>
 											</div>
 											<div class="field__body">
-												<input type="text">
+												<input type="text" data-validation="mail">
 											</div>
 										</div>
 									</div>
@@ -1196,7 +1196,7 @@
 		</div>
 		<footer class="footer">
 			<div class="copyright">© АтлантКонсалт, 1999–2016</div>
-			<div class="developer">Сделано во <a href="flxmd.by" target="_blank" rel="nofollow">FlexMedia</a></div>
+			<div class="developer"><a href="flxmd.by" target="_blank" rel="nofollow">Сделано во <span>FlexMedia</span></a></div>
 			<div class="overlay">
 				<button class="scroll-top" type="button">
 					<span>Наверх</span>
@@ -1285,7 +1285,7 @@
 			 <div class="form">
 				<form action="">
 					<div class="field">
-						<div id="mydropzone1" class="dropzone" action="../fileupload.php">
+						<div id="mydropzone1" class="dropzone">
 							<div class="upload__block">
 								<div class="upload__preview">
 									<div class="upload__text">
