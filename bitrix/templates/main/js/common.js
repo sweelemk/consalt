@@ -1109,7 +1109,7 @@ $(document).ready(function () {
 		var fullpageSettings = {
 			css3: true,
 			// easingcss3: 'cubic-bezier(1,.47,1,1)',
-			scrollingSpeed: 700,
+			scrollingSpeed: 400,
 			fitToSection: true,
 			navigation: true,
 			navigationPosition: 'left',
@@ -1234,11 +1234,26 @@ $(document).ready(function () {
 				menu.removeClass('open');
 				overlay
 					.removeClass('menu-open')
-					.delay(500)
+					.delay(150)
 					.fadeOut(150);
 			});
 
 	} menuToggle();
+
+	function menuHide() {
+		var top = $(window).scrollTop(),
+			menu = $('.menu');
+
+		if(top > 50) {
+			menu.addClass('hide');
+		} else {
+			menu.removeClass('hide');
+		}
+	} menuHide();
+
+	$(window).on('scroll', function(){
+		menuHide();
+	});
 
 	// switcher
 	function switcher(){

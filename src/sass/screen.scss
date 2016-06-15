@@ -95,7 +95,7 @@ a {
 	z-index: 201;
 	@include r(1365) {
 		@include x-rem(right, 25px);
-	@include x-rem(top, 43px);
+		@include x-rem(top, 43px);
 	}
 	&.open {
 		.menu-btn {
@@ -107,6 +107,11 @@ a {
 					top: 9px;
 				}
 			}
+		}
+	}
+	&.hide {
+		.menu-left {
+			opacity: 0;
 		}
 	}
 	.menu-left {
@@ -386,8 +391,8 @@ a {
 		bottom: 0;
 		right: 0;
 		opacity: 0;
-		transform: translateY(300px);
-		transition: 0.9s cubic-bezier(.89,.42,1,1) 0s, opacity 0.9s cubic-bezier(.89,.42,1,1) 0s;
+		transform: translateY(100%);
+		transition: 0.5s cubic-bezier(.89,.42,1,1) 0s, opacity 0.5s cubic-bezier(.89,.42,1,1) 0s;
 		@include r(1365) {
 			@include x-rem(bottom, 10px);
 		}
@@ -585,13 +590,12 @@ a {
 					font-family: $Book;
 					@include x-rem(font-size, 19px);
 					color: $grey;
-					transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out 0.3s;
+					transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 					@include x-rem(padding, 15px 65px);
 					display: inline-block;
 					width: 100%;
 					&:hover {
 						color: $hover;
-						transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 						background-color: $scroll;
 					}
 				}
@@ -704,8 +708,8 @@ a {
 	cursor: pointer;
 	text-align: center;
 	opacity: 0;
-	transform: translateY(300px);
-	transition: 0.9s cubic-bezier(.89,.42,1,1) 0s, opacity 0.9s cubic-bezier(.89,.42,1,1) 0s;
+	transform: translateY(100%);
+	transition: 0.5s ease-in-out 0s, opacity 0.5s ease-in-out 0s;
 	@include r(1365) {
 		@include x-rem(bottom, 33px);
 	}
@@ -865,25 +869,25 @@ a {
 	}
 	&.up {
 		.section__left {
-			transform: translateY(-5%);
+			transform: translateY(-15%);
 		}
 		.section__right {
-			transform: translateY(-5%);
+			transform: translateY(-15%);
 		}
 	}
 	&.down {
 		.section__left {
-			transform: translateY(5%);
+			transform: translateY(15%);
 		}
 		.section__right {
-			transform: translateY(5%);
+			transform: translateY(15%);
 		}
 	}
 	&.active.fp-completely .section__left {
 	    opacity: 1;
 		transform: translateY(0px);
 		z-index: 1;
-		transition: transform 0.3s ease 0s, opacity 0.3s ease;
+		transition: transform 0.3s ease 0s, opacity 0.5s ease;
 	}
 	&.fp-completely .section__left {
 	    opacity: 0;
@@ -897,7 +901,7 @@ a {
 	    opacity: 1;
 		transform: translateY(0px);
 		z-index: 1;
-		transition: transform 0.3s ease 0s, opacity 0.3s ease;
+		transition: transform 0.3s ease 0s, opacity 0.5s ease;
 	}
 	&.fp-completely .section__right {
 	    opacity: 0;
@@ -906,6 +910,9 @@ a {
 			opacity: 1;
 			transform: none;
 		}
+	}
+	&.active {
+		z-index: 1;
 	}
 }
 .section__left {
@@ -931,7 +938,7 @@ a {
 	}
 	opacity: 0;
 	transform: translateY(5%);
-	transition: transform 0.3s ease 0.5s, opacity 1s ease;
+	transition: transform 0.1s ease 0.3s, opacity .5s ease;
 	@include r(980) {
 		opacity: 1;
 		transform: none;
@@ -957,7 +964,7 @@ a {
 	}
 	opacity: 0;
 	transform: translateY(5%);
-	transition: transform 0.3s ease 0.5s, opacity 1s ease;
+	transition: transform 0.1s ease 0.3s, opacity .5s ease;
 	@include r(980) {
 		opacity: 1;
 		transform: none;
