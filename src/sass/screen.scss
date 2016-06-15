@@ -65,9 +65,12 @@ input {
 button {
 	border: none;
 	outline: none;
-	background: transparent;
+	background: none;
 	padding: 0;
 	cursor: pointer;
+}
+[type=reset], [type=submit], button, html [type=button] {
+    -webkit-appearance: initial;
 }
 a {
 	text-decoration: none;
@@ -201,29 +204,15 @@ a {
 		padding-left: 5.2%;
 		padding-right: 5.2%;
 		@include x-rem(padding-bottom, 30px);
-		&::after {
-			content: '';
-			background-color: $white;
-			position: absolute;
-			z-index: 0;
-			left: 0;
-			bottom: 0;
-			height: 53%;
-			width: 100%;
-		}
-	}
-	@include r(639) {
-		&::after {
-			height: 47%;
-		}
 	}
 	.head {
 		margin-top: 20%;
 		position: relative;
 		padding-right: 5%;
 		z-index: 1;
+		max-width: 90%;
 		@include r(980) {
-			margin: 2% 0;
+			margin: 2% 0 4%;
 		}
 		h1 {
 			font-family: $Light;
@@ -232,7 +221,21 @@ a {
 			font-weight: 100;
 		}
 	}
-
+	@include r(980) {
+		.nav-inner {
+			max-width: 100%;
+			&::after {
+				background-color: #fff;
+				@include x-rem(bottom, -30px);
+				content: "";
+				left: -5.2%;
+				position: absolute;
+				right: -5.2%;
+				@include x-rem(top, -5px);
+				z-index: -1;
+			}
+		}
+	}
 }
 .viewport-right {
 	width: 70%;
@@ -335,16 +338,20 @@ a {
 	}
 	.developer {
 		float: right;
-		font-family: $Book;
-		@include x-rem(font-size, 14px);
 		@include x-rem(margin, 14px 0 0);
-		color: $grey;
 		a {
-			font-family: $Demi;
+			font-family: $Book;
+			@include x-rem(font-size, 14px);
 			color: $grey;
-			transition: color 0.3s ease-in-out;
+			span {
+				font-family: $Demi;
+				color: $grey;
+				transition: color 0.3s ease-in-out;
+			}
 			&:hover {
-				color: $hover;
+				span {
+					color: $hover;
+				}
 			}
 		}
 		@include r(639) {
@@ -598,6 +605,7 @@ a {
 	z-index: 1;
 	@include x-rem(bottom, 63px);
 	right: 5%;
+	max-width: 50%;
 	@include r(1365) {
 		left: 9%;
 	}
@@ -852,12 +860,23 @@ a {
 }
 .section {
 	position: absolute;
+	@include r(980) {
+		position: relative;
+	}
 	&.up {
 		.section__left {
 			transform: translateY(-5%);
 		}
 		.section__right {
 			transform: translateY(-5%);
+		}
+	}
+	&.down {
+		.section__left {
+			transform: translateY(5%);
+		}
+		.section__right {
+			transform: translateY(5%);
 		}
 	}
 	&.active.fp-completely .section__left {
@@ -869,6 +888,10 @@ a {
 	&.fp-completely .section__left {
 	    opacity: 0;
 	    transform: translateY(0%);
+	    @include r(980) {
+			opacity: 1;
+			transform: none;
+		}
 	}
 	&.active.fp-completely .section__right {
 	    opacity: 1;
@@ -879,6 +902,10 @@ a {
 	&.fp-completely .section__right {
 	    opacity: 0;
 	    transform: translateY(0%);
+	    @include r(980) {
+			opacity: 1;
+			transform: none;
+		}
 	}
 }
 .section__left {
@@ -904,7 +931,11 @@ a {
 	}
 	opacity: 0;
 	transform: translateY(5%);
-	transition: transform 0.3s ease, opacity 0.8s ease;
+	transition: transform 0.3s ease 0.5s, opacity 1s ease;
+	@include r(980) {
+		opacity: 1;
+		transform: none;
+	}
 }
 .section__right {
 	width: 53.4375%;
@@ -926,7 +957,11 @@ a {
 	}
 	opacity: 0;
 	transform: translateY(5%);
-	transition: transform 0.3s ease, opacity 0.8s ease;
+	transition: transform 0.3s ease 0.5s, opacity 1s ease;
+	@include r(980) {
+		opacity: 1;
+		transform: none;
+	}
 }
 .head__section {
 	margin-top: 13%;
@@ -1023,7 +1058,6 @@ a {
 		&::after {
 			content: '';
 			width: 75%;
-			// @include x-rem(height, 200px);
 			bottom: 0;
 			background-color: $scroll;
 			position: absolute;
@@ -1122,21 +1156,21 @@ a {
 		.double {
 			margin-bottom: 0;
 			.business-item {
-				&:hover {
-					.head {
-						color: $grey;
-						&::after {
-							opacity: 0;
-							transform: none;
-						}
-					}
-				}
+				// &:hover {
+				// 	.head {
+				// 		color: $grey;
+				// 		&::after {
+				// 			opacity: 0;
+				// 			transform: none;
+				// 		}
+				// 	}
+				// }
 			}
 		}
 	}
 }
 .clients {
-	margin: 9% 0 1%;
+	margin: 7% 0 4%;
 	@include r(1365) {
 		margin: 1% 0 4%;
 	}
@@ -1153,7 +1187,7 @@ a {
 		vertical-align: top;
 		margin-right: 4.33%;
 		padding-right: 4.33%;
-		margin-bottom: 3%;
+		margin-bottom: 2%;
 		position: relative;
 		@include r(1365) {
 			margin-bottom: 0;
@@ -1195,7 +1229,7 @@ a {
 	.head {
 		position: relative;
 		display: inline-block;
-		@include x-rem(height, 129px);
+		@include x-rem(height, 115px);
 		width: 100%;
 		img {
 			max-width: 100%;
@@ -1253,16 +1287,16 @@ a {
 			padding-right: 2%;
 			&::after {
 				content: '';
-				@include x-rem(bottom, -15px);
-				left: 0;
-				width: 100%;
-				@include x-rem(top, -30px);
+				width: 75%;
+				bottom: 0;
 				background-color: $scroll;
 				position: absolute;
+				top: -10px;
+				left: 15%;
 				z-index: -1;
-				transform: translateX(0);
 				opacity: 0;
-				transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+				transform: scale(0.5);
+				transition: transform 0.15s ease-in-out, opacity 0.15s ease-in-out;
 			}
 			&:hover {
 				&::after {
@@ -1289,15 +1323,16 @@ a {
 		vertical-align: top;
 		margin-right: 4.33%;
 		padding-right: 3.33%;
-		margin-bottom: 5%;
+		margin-bottom: 3%;
+		padding-bottom: 2%;
 		position: relative;
 		&::after {
 			content: '';
-			width: 85%;
-			@include x-rem(height, 107px);
+			width: 75%;
+			bottom: 0;
 			background-color: $scroll;
 			position: absolute;
-			top: 25%;
+			top: -10px;
 			left: 15%;
 			z-index: -1;
 			opacity: 0;
@@ -1326,12 +1361,14 @@ a {
 		.tooltip {
 			display: none;
 		}
+		&.tips {
+			cursor: pointer;
+		}
 	}
 	.head {
 		position: relative;
 		display: inline-block;
 		@include x-rem(height, 36px);
-		width: 100%;
 		margin-bottom: 8%;
 		@include r(479) {
 			@include x-rem(height, 60px);
@@ -1339,16 +1376,18 @@ a {
 		}
 		&::after {
 			content: '';
+			width: 27px;
+			height: 16px;
 			@include x-rem(width, 27px);
 			@include x-rem(height, 16px);
-			@include x-rem(margin, -8px 8px 0 0);
+			@include x-rem(margin, -8px -8px 0 0);
 			background-image: url(../img/icons/arrow.png);
 			background-size: cover;
 			position: absolute;
-			bottom: -1%;
+			top: 50%;
 			transition: transform 0.15s ease-in-out , opacity 0.15s ease-in-out;
 			opacity: 0;
-			left: 70%;
+			left: 100%;
 			@include r(980) {
 				display: none;
 			}
@@ -1483,6 +1522,9 @@ a {
 		float: left;
 		height: 100%;
 		opacity: 0;
+		@include r(980) {
+			display: none;
+		}
 	}
 	.menu__right {
 		width: 43.875%;
@@ -1491,7 +1533,7 @@ a {
 		background-color: $white;
 		@include x-rem(padding-top, 80px);
 		transform: translateX(100%);
-		transition: transform 0.5s cubic-bezier(.89,.42,1,1);
+		transition: transform 0.15s cubic-bezier(.89,.42,1,1);
 		@include r(1365) {
 			@include x-rem(padding-top, 41px);
 			// padding-left: 2%;
@@ -1504,13 +1546,13 @@ a {
 					margin-left: 10.5%;
 				}
 			}
-			@include r(980){
+			@include r(980) {
 				padding-left: 0;
 			}
 		}
 		@include r(980) {
 			width: 100%;
-			padding-left: 9.375%;
+			padding-left: 0;
 			.nav {
 				display: inline-block;
 				width: 100%;
@@ -1528,11 +1570,15 @@ a {
 				.nav-item {
 					width: 100%;
 					display: inline-block;
-					@include x-rem(font-size, 27px);
-					font-family: $Bold;
-					padding: 1% 0;
 					&:not(:first-child) {
 						margin-left: 0;
+					}
+					a {
+						width: 100%;
+						display: inline-block;
+						@include x-rem(font-size, 27px);
+						font-family: $Bold;
+						padding: 1% 0;
 					}
 				}
 			}
@@ -1609,7 +1655,7 @@ a {
 					background-color: $scroll;
 				}
 				@include r(980) {
-					@include x-rem(font-size, 17px);
+					@include x-rem(font-size, 22px);
 					font-family: $Demi;
 					padding: 1% 0;
 				}
@@ -1767,9 +1813,11 @@ a {
 	width: 100%;
 	position: relative;
 	@include x-rem(margin-bottom, 80px);
+	@include x-rem(margin-top, 40px);
 	font-size: 0;
 	@include r(735) {
 		@include x-rem(margin-bottom, 30px);
+		@include x-rem(margin-top, 0px);
 	}
 	&.small__blockquote {
 		.overlay {
@@ -1990,12 +2038,18 @@ a {
 		}
 	}
 	&.double-text {
-		columns: 2;
+		.double__item {
+			padding-right: 4%;
+			&:not(:last-child) {
+				padding-right: 4%;
+			}
+		}
 		@include r(735) {
-			columns: auto;
+			// columns: auto;
+			padding-right: 0;
 		}
 		p {
-			padding-right: 7%;
+			// padding-right: 7%;
 		}
 	}
 	&.double-summary {
@@ -2013,6 +2067,11 @@ a {
 			.btn {
 				@include x-rem(margin-top, 20px);
 			}
+		}
+		&.profil {
+			@include x-rem(margin-top, -40px);
+			@include x-rem(padding-top, 40px);
+			border-top: 1px solid  $scroll;
 		}
 	}
 	&.double-row {
@@ -2072,7 +2131,7 @@ a {
 			}
 		}
 		& > img {
-			max-width: 80%;
+			max-width: 60%;
 			@include r(735) {
 				@include x-rem(margin-bottom, 30px);
 			}
@@ -2498,7 +2557,6 @@ a {
 .news-container {
 	font-size: 0;
 	overflow: hidden;
-	margin-left: -6%;
 	@include x-rem(margin-bottom, 80px);
 	font-size: 0;
 	position: relative;
@@ -2935,6 +2993,7 @@ a {
 			margin: 0;
 			.managers-item {
 				padding: 0;
+				@include x-rem(margin-top, 7px);
 			}
 		}
 	}
@@ -3472,6 +3531,9 @@ a {
 				@include x-rem(padding-right, 10px);
 				.check-item {
 					width: 50%;
+					input {
+						width: auto;
+					}
 				}
 			}
 			.input-item {
@@ -3507,6 +3569,11 @@ a {
 }
 .review__container {
 	font-size: 0;
+	@include x-rem(margin-top, 40px);
+	@include r(735) {
+		@include x-rem(margin-top, 20px);
+	}
+	display: inline-block;
 	.review-item {
 		display: inline-block;
 		vertical-align: top;
@@ -3582,7 +3649,12 @@ a {
 		.popup__img {
 			width: 15%;
 			float: left;
+			border: 1px solid $lgrey;
 			@include x-rem(margin-right, 20px);
+			transition: border-color 0.3s ease-in-out;
+			&:hover {
+				border-color: $hover;
+			}
 			img {
 				max-width: 100%;
 			}
@@ -3823,6 +3895,12 @@ a {
 				@include x-rem(font-size, 19px);
 				@include x-rem(line-height, 19px);
 				color: $grey;
+				transition: color 0.3s ease-in-out;
+			}
+			&:hover {
+				span {
+					color: $hover;
+				}
 			}
 		}
 	}
@@ -4032,6 +4110,9 @@ a {
 		display: inline-block;
 		width: 36.33%;
 		vertical-align: top;
+		input {
+			width: auto;
+		}
 		@include r(560) {
 			width: 50%;
 		}

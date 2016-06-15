@@ -3,13 +3,15 @@ $(document).ready(function () {
 	//detected mobile an init fullpage slider
 	if(!head.mobile) {
 		initFullpage();
+	} else {
+		scrolls();
 	}
 
 	function initFullpage() {
 		var fullpageSettings = {
 			css3: true,
 			// easingcss3: 'cubic-bezier(1,.47,1,1)',
-			scrollingSpeed: 500,
+			scrollingSpeed: 700,
 			fitToSection: true,
 			navigation: true,
 			navigationPosition: 'left',
@@ -66,8 +68,6 @@ $(document).ready(function () {
 
 		} init();
 
-
-
 		$(window).on('resize', function(){
 			init();
 		});			
@@ -77,16 +77,6 @@ $(document).ready(function () {
 		});
 	};
 
-	function header(direction, nextIndex) {
-		if(direction === 'down') {
-			$('.section').removeClass('up');
-			$('.section.active').next().addClass('down').siblings().removeClass('down');
-		} else {
-			$('.section').removeClass('down');
-			$('.section.active').prev().addClass('up').siblings().removeClass('up');
-		}
-	}
-
 	//moveUp
 	function moveSlideUp() {
 		var sTop = $('.scroll-top');
@@ -95,12 +85,20 @@ $(document).ready(function () {
 			if(!$(this).hasClass('mobile')) {
 				$.fn.fullpage.moveTo(1);
 			} else {
-				$('html, body').animate({
-					scrollTop: 0
-				}, 850);
+				scrolls();
 			};
 		})
 	} moveSlideUp();
+
+	function scrolls() {
+		var sTop = $('.scroll-top');
+
+		sTop.on('click', function() {
+			$('html, body').animate({
+				scrollTop: 0
+			}, 850);
+		});
+	};
 
 	//menu toggle
 	function menuToggle() {
@@ -114,17 +112,19 @@ $(document).ready(function () {
 			menu.on('click', function(){
 				if(overlay.hasClass('menu-open')) {
 					menuText.removeClass('hidden');
+					$body.removeClass('hidden');
 					menu.removeClass('open');
 					overlay
 						.removeClass('menu-open')
-						.delay(500)
-						.fadeOut(350);
+						.delay(150)
+						.fadeOut(150);
 				} else {
 					overlay.fadeIn({
-						duration: 350,
+						duration: 150,
 						complete: function(){
 							overlay.addClass('menu-open');
 							menuText.addClass('hidden');
+							$body.addClass('hidden');
 							menu.addClass('open');
 						}
 					})
@@ -132,11 +132,12 @@ $(document).ready(function () {
 			});
 			Lside.on('click', function(){
 				menuText.removeClass('hidden');
+				$body.removeClass('hidden');
 				menu.removeClass('open');
 				overlay
 					.removeClass('menu-open')
 					.delay(500)
-					.fadeOut(350);
+					.fadeOut(150);
 			});
 
 	} menuToggle();
@@ -200,7 +201,7 @@ $(document).ready(function () {
 
 	function tips(id, tip) {
 		tip.tooltipster({
-			animation: 'grow',
+			animation: 'fade',
 			maxWidth: 330,
 			speed: 500,
 			functionInit: function(){
@@ -232,7 +233,7 @@ $(document).ready(function () {
 			Dropzone.autoDiscover = false;
 			$('#mydropzone1').dropzone(
 				{
-					// url: '../fileupload.php',
+					url: '../fileupload.php',
 					accept: function(file, done) {
 						var re = /(?:\.([^.]+))?$/;
 						var ext = re.exec(file.name)[1];
@@ -417,7 +418,6 @@ $(document).ready(function () {
 
 	function validPick(form){
 		var pick = $(form);
-		alert(pick)
 		pick.each(function(){
 			var val = $(this).val();
 			if(val === ''){
