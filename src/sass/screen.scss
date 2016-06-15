@@ -228,9 +228,9 @@ a {
 				background-color: #fff;
 				@include x-rem(bottom, -30px);
 				content: "";
-				left: -5.2%;
+				left: -5.8%;
 				position: absolute;
-				right: -5.2%;
+				right: -5.8%;
 				@include x-rem(top, -5px);
 				z-index: -1;
 			}
@@ -1490,7 +1490,7 @@ a {
 		transition-property: transform, opacity;
 		transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
 		width: 100%;
-		z-index: -1;
+		z-index: 0;
 		@include x-rem(border-radius, 22px);
 	}
 	span {
@@ -1501,6 +1501,8 @@ a {
 		@include x-rem(letter-spacing, 1.2px);
 		@include x-rem(padding, 0 58px);
 		transition: color 0.2s cubic-bezier(0.2, 1, 0.3, 1);
+		position: relative;
+		z-index: 1;
 	}
 	&:hover {
 		&::before {
