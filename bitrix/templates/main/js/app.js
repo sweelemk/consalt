@@ -554,7 +554,7 @@ $(window).on('load', function(){
 			scroll;
 		if(post[1]){
 			setTimeout(function(){
-				scroll = $('#' + post[1]).offset().top - 50;
+				scroll = $('#' + post[1]).offset().top;
 				$('html, body').animate({
 					scrollTop: scroll - scroll / 50
 				}, 800, 'linear');
