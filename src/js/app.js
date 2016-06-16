@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+	$("img, a").on("dragstart", function(event) { event.preventDefault(); });
 	
 	//detected mobile an init fullpage slider
 	if(!head.mobile) {
