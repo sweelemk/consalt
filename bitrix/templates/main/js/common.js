@@ -1642,4 +1642,20 @@ $(document).ready(function () {
 	// function autoSize() {
 		autosize($('.size'));
 	//} autosize();
-})
+});
+$(window).on('load', function(){
+	function hash() {
+		var lHref = window.location.href,
+			post = lHref.split('#'),
+			fSize = $('html').css('font-size'),
+			fSize = parseInt(fSize),
+			vScroll = (8 / fSize)*100,
+			scroll;
+		setTimeout(function(){
+			scroll = $('#' + post[1]).offset().top - 50;
+			$('html, body').animate({
+				scrollTop: scroll
+			}, 800, 'linear');
+		}, 100);
+	} hash();
+});

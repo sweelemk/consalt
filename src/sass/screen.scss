@@ -78,12 +78,16 @@ a {
 #canvasGL {
 	canvas {
 		position: absolute;
-		bottom: 0;
+		bottom: -20%;
 		left: 0;
 		width: 94%!important;
-		height: 60%!important;
 		@include r(980){
 			width: 200%!important;
+		}
+		@include r(735){
+			width: 135%!important;
+			
+			height: 100%!important;
 		}
 	}
 }
@@ -168,16 +172,27 @@ a {
 	&:hover {
 		.menu-left {
 			color: $hover;
+			@include r(980) {
+				color: $grey;
+			}
 		}
 		.menu-btn {
 			span {
 				&:before {
 					@include x-rem(bottom, -5px);
 					background-color: $hover;
+					@include r(980) {
+						background-color: $grey;
+						@include x-rem(bottom, 0);
+					}
 				}
 				&:after {
 					@include x-rem(top, -5px);
 					background-color: $hover;
+					@include r(980) {
+						background-color: $grey;
+						@include x-rem(top, 0);
+					}
 				}
 			}
 		}
@@ -197,8 +212,12 @@ a {
 	background-size: contain;
 	background-position: 0 100%;
 	background-repeat: no-repeat;
+	transition: padding 0.3s ease-in-out;
 	@include r(1365) {
 		@include x-rem(padding-top, 30px);
+		padding-left: 4%;
+	}
+	@include r(1279) {
 		padding-left: 2%;
 	}
 	@include r(980) {
@@ -217,7 +236,7 @@ a {
 		z-index: 1;
 		max-width: 90%;
 		@include r(980) {
-			margin: 2% 0 4%;
+			margin: 10% 0;
 		}
 		h1 {
 			font-family: $Light;
@@ -229,6 +248,11 @@ a {
 	@include r(980) {
 		.nav-inner {
 			max-width: 100%;
+			padding: 8% 0 2%;
+			a {
+				@include x-rem(font-size, 20px);
+				padding: 2% 0;
+			}
 			&::after {
 				background-color: #fff;
 				@include x-rem(bottom, -30px);
@@ -248,6 +272,7 @@ a {
 	.header {
 		padding-left: 9.82%;
 		padding-right: 12.82%;
+		transition: padding 0.3s ease-in-out;
 		@include r(1365) {
 			padding-left: 5.2%;
 		}
@@ -287,6 +312,7 @@ a {
 		}
 		@include r(980) {
 			display: inline-block;
+			width: 100%;
 		}
 		.header__left {
 			width: 46.5325%;
@@ -294,11 +320,16 @@ a {
 			vertical-align: middle;
 			padding-right: 5.2%;
 			padding-left: 9.375%; // 150px / 1600
+			transition: padding 0.3s ease-in-out;
 			@include r(1365) {
+				padding-left: 4.375%;
+			}
+			@include r(1279) {
 				padding-left: 2.375%;
 			}
 			@include r(980) {
 				padding-left: 5.2%;
+				width: 100%;
 			}
 		}
 		.header__right {
@@ -320,7 +351,7 @@ a {
 	padding-right: 9.82%;
 	@include clearfix;
 	@include x-rem(padding-top, 80px);
-	@include x-rem(padding-bottom, 80px);
+	@include x-rem(padding-bottom, 72px);
 	@include r(1365) {
 		padding-left: 5.2%;
 		padding-right: 5.2%;
@@ -578,7 +609,7 @@ a {
 			display: none;
 		}
 		.dropdown-inner {
-			box-shadow: 0px 20px 30px 0px rgba(159, 178, 196, 0.3);
+			box-shadow: 0px 15px 62px 0px rgba(159, 178, 196, 0.3);
 			@include x-rem(padding, 10px 0);
 			background-color: $white;
 			display: table-cell;
@@ -610,7 +641,11 @@ a {
 	@include x-rem(bottom, 63px);
 	right: 5%;
 	max-width: 50%;
+	transition: left 0.3s ease-in-out;
 	@include r(1365) {
+		left: 15%;
+	}
+	@include r(1279) {
 		left: 9%;
 	}
 	@include r(980) {
@@ -818,12 +853,17 @@ a {
 		position: absolute;
 		@include x-rem(bottom, 60px);
 		left: 9.5%;
-		width: 22%;		
+		// width: 22%;
+		@include x-rem(max-width, 390px);
 		@include r(1365) {
-			left: 2.375%;
-			@include x-rem(max-width, 330px);
+			transition: left 0.3s ease-in-out;
+			left: 4.375%;
+			// @include x-rem(max-width, 330px);
 			width: 100%;
 			@include x-rem(bottom, 20px);
+		}
+		@include r(1279) {
+			left: 2.375%;
 		}
 		@include r(980) {
 			display: none;
@@ -887,7 +927,7 @@ a {
 	    opacity: 1;
 		transform: translateY(0px);
 		z-index: 1;
-		transition: transform 0.3s ease 0s, opacity 0.5s ease;
+		transition: transform 0.3s ease 0s, opacity 0.5s ease, padding 0.3s ease-in-out;
 	}
 	&.fp-completely .section__left {
 	    opacity: 0;
@@ -901,7 +941,7 @@ a {
 	    opacity: 1;
 		transform: translateY(0px);
 		z-index: 1;
-		transition: transform 0.3s ease 0s, opacity 0.5s ease;
+		transition: transform 0.3s ease 0s, opacity 0.5s ease, padding 0.3s ease-in-out;
 	}
 	&.fp-completely .section__right {
 	    opacity: 0;
@@ -923,6 +963,11 @@ a {
 	padding-right: 4.2%;
 	padding-left: 9.375%; // 150px / 1600
 	@include r(1365) {
+		padding-left: 4.375%;
+		padding-right: 7.2%;
+		@include x-rem(padding-top, 66px);
+	}
+	@include r(1279) {
 		padding-left: 2.375%;
 		padding-right: 5.2%;
 		@include x-rem(padding-top, 66px);
@@ -938,7 +983,7 @@ a {
 	}
 	opacity: 0;
 	transform: translateY(5%);
-	transition: transform 0.1s ease 0.3s, opacity .5s ease;
+	transition: transform 0.1s ease 0.3s, opacity .5s ease,  padding 0.3s ease-in-out;
 	@include r(980) {
 		opacity: 1;
 		transform: none;
@@ -964,7 +1009,7 @@ a {
 	}
 	opacity: 0;
 	transform: translateY(5%);
-	transition: transform 0.1s ease 0.3s, opacity .5s ease;
+	transition: transform 0.1s ease 0.3s, opacity .5s ease, padding 0.3s ease-in-out;
 	@include r(980) {
 		opacity: 1;
 		transform: none;
@@ -973,6 +1018,12 @@ a {
 .head__section {
 	margin-top: 13%;
 	position: relative;
+	@include r(1365) {
+		max-width: 80%;
+	}
+	@include r(1150) {
+		max-width: 100%;
+	}
 	@include r(980) {
 		margin-top: 0;
 	}
@@ -1587,7 +1638,7 @@ a {
 			.nav {
 				display: inline-block;
 				width: 100%;
-				margin-bottom: 4%;
+				margin-bottom: 9%;
 				margin-top: 10%;
 				@include r(735) {
 					margin-top: 20%;
@@ -1596,7 +1647,7 @@ a {
 					margin-top: 25%;
 				}
 				@include r(479) {
-					margin-top: 35%;
+					margin-top: 20%;
 				}
 				.nav-item {
 					width: 100%;
@@ -1607,9 +1658,9 @@ a {
 					a {
 						width: 100%;
 						display: inline-block;
-						@include x-rem(font-size, 27px);
+						@include x-rem(font-size, 32px);
 						font-family: $Bold;
-						padding: 1% 0;
+						padding: 2% 0;
 					}
 				}
 			}
@@ -1686,9 +1737,9 @@ a {
 					background-color: $scroll;
 				}
 				@include r(980) {
-					@include x-rem(font-size, 22px);
+					@include x-rem(font-size, 24px);
 					font-family: $Demi;
-					padding: 1% 0;
+					padding: 2% 0;
 				}
 			}
 			ul {
@@ -1748,6 +1799,7 @@ a {
 	@include x-rem(padding-top, 40px);
 	padding-left: 9.82%;
 	padding-right: 11.82%;
+	transition: padding 0.3s ease-in-out;
 	@include r(1365) {
 		@include x-rem(padding-top, 30px);
 		padding-left: 5.2%;
@@ -2232,6 +2284,9 @@ a {
 		&.business-single {
 			.business-item {
 				width: 50%;
+				@include r(480) {
+					width: 100%;
+				}
 			}
 		}
 	}
