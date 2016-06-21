@@ -1,5 +1,11 @@
 $(document).ready(function(){
   if($('#experience').length){
+    var speeds;
+    if($('#experience').hasClass('inner')) {
+      speeds = 0;
+    } else {
+      speeds = 0.4;
+    }
     (function() {
       var App,
         bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
@@ -103,7 +109,7 @@ $(document).ready(function(){
           noise_range: 2.14,
           sombrero_amplitude: 0.6,
           sombrero_frequency: 10.0,
-          speed: 0.4,
+          speed: speeds,
           segments: 324,
           wireframe_color: '#0f6cb6',
           perlin_passes: 0,

@@ -198,6 +198,9 @@ a {
 		}
 	}
 }
+.dg.ac {
+	display: none;
+}
 .viewport-left {
 	width: 30%; // 
 	float: left;
@@ -208,10 +211,10 @@ a {
 	background-color: $leftBar;
 	padding-left: 7%;
 	@include x-rem(padding-top, 72px);
-	background-image: url(../img/mobile-bg.jpg);
-	background-size: contain;
-	background-position: 0 100%;
-	background-repeat: no-repeat;
+	// background-image: url(../img/mobile-bg.jpg);
+	// background-size: contain;
+	// background-position: 0 100%;
+	// background-repeat: no-repeat;
 	transition: padding 0.3s ease-in-out;
 	@include r(1365) {
 		@include x-rem(padding-top, 30px);
@@ -727,6 +730,22 @@ a {
 		background-color: $white;
 		@include r(980) {
 			display: none;
+		}
+	}
+	&.canvas__area-inner {
+		position: absolute;
+		z-index: 0;
+		background-color: transparent;
+		width: 100%;
+		overflow: hidden;
+		&::after {
+			display: none;
+		}
+		#canvasGL {
+			canvas {
+				width: 184%!important;
+				bottom: -35%;
+			}
 		}
 	}
 }
